@@ -1,6 +1,7 @@
 import json
 
 
+
 import requests
 
 def get_data(location):
@@ -69,5 +70,28 @@ def check_aqi(aqi):
     return index
 
 
-data = get_data("Dresden")
-print(data)
+def average_germany(value):
+    try:
+        data = 0
+        cities = open("cities/cities", "r")
+        city_list = cities.readlines()
+        city_list_len = len(city_list)
+        for n in range(city_list_len):
+            city_list[n] = city_list[n].replace("\n", "")
+        for city in range(city_list_len):
+            city_to_get_data_of = city_list[city]
+            city_data = get_data(city_to_get_data_of)[value]
+            print(city_list_len)
+            if not city_data == None:
+                data = data + city_data
+            else:
+                city_list_len -= 1
+        data = data/city_list_len
+        print(data)
+        return data
+    except:
+        return "Ein Fehler ist unterlaufen"
+
+
+if __name__ == '__main__':
+    average_germany("No2")
