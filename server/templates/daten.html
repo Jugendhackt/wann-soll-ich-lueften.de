@@ -28,8 +28,10 @@
     </div>
 
     <div>
-        <p>Luftqualität: </p>
-        <p>Sollte ich jetzt lüften: </p>
+        <p>Luftqualität: {{ quality }}</p>
+        <p>Sollte ich jetzt lüften: {{ lueften }}</p>
+        <p>Stationsname: {{ Stationsname }}</p>
+        <p>Letztes Update: {{ Updatestatus }}</p>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"defer></script>
