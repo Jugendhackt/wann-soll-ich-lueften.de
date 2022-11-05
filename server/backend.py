@@ -81,16 +81,14 @@ def average_germany(value):
         for city in range(city_list_len):
             city_to_get_data_of = city_list[city]
             city_data = get_data(city_to_get_data_of)[value]
-            print(city_list_len)
             if not city_data == None:
                 data = data + city_data
             else:
                 city_list_len -= 1
         data = data/city_list_len
-        print(data)
         return data
     except:
-        return "Ein Fehler ist unterlaufen"
+        return None
 
 
 if __name__ == '__main__':

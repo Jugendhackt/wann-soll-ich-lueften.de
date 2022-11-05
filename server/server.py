@@ -37,10 +37,12 @@ def luft():
     country = request.args.get('country')
     luft = backend.get_data(country)
     aqi = luft['AQI']
-    averageaqi = backend.average_germany('aqi')
+    averageaqi = backend.average_germany('AQI')
+    if averageaqi is None :
+        averageaqi = aqi
     lueften = 'Ja'
-    #if aqi > averageaqi : 
-    #    lueften = 'Nein'
+    if aqi > averageaqi : 
+        lueften = 'Nein'
 
     Stationsname = luft['Station Name']
     Updatestatus = luft['Last Update']
