@@ -13,9 +13,9 @@
   <body>
 
     <div class="center">
-        <p>
+        <center>
             <h1 class="display-1"><b>Wann soll ich lüften?</b></h1> 
-        </p>
+        </center>
     </div>
     
     <center>
@@ -24,9 +24,18 @@
         <div class="col-4">
             <label for="country" class="form-label">Gib deine Stadt ein:</label>
             <form class="form-inline" action="/luft" method="get">
+              <div class="input-group mb-3">
                 <input name="country" class="form-control mr-sm-2" type="text" placeholder="Stadt...">
                 <button class="btn btn-success" type="submit">Senden</button>
-            </form>        
+              </div>
+            </form>
+            
+            {% if Error %}
+            <div class="alert alert-danger" role="alert">
+              Es sind keine Daten für diese Stadt verfügbar!
+            </div>
+            {% endif %}
+
         </div>
         
         <div class="col-4"></div>

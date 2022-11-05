@@ -18,10 +18,12 @@
       
       <p class="display-3"><b>
 
-        {% if lueften <= 0 %}
-          <span class="badge text-bg-success">Jetzt!</span>
+        {% if scale >= 8 %}
+          <span class="badge text-bg-success">{{index}}</span>
+        {% elif scale <= 2 %}
+          <span class="badge text-bg-danger">{{index}}</span>
         {% else %}
-          <span class="badge text-bg-warning">Wahrscheinlich in {{ lueften }} Minuten!</span>
+          <span class="badge text-bg-warning">{{index}}</span>
         {% endif %}
       
       </b></p>
@@ -31,22 +33,11 @@
 
     <center>
     <div>
-        <p class="display-5">Luftqualität: <b>{{ quality }}</b></p>
+        <p class="display-5">Luftqualität: <b>{{ scale }}/{{ max_scale }}</b></p>
         <p class="display-5">Stationsname: <b>{{ Stationsname }}</b></p>
         <p class="display-5">Letztes Update: <b>{{ Updatestatus }}</b></p>
     </div>
     </center>
-
-
-    <div class="row">
-      <div id="map" class="col-sm-6">
-          
-      </div>
-      <div class="col-sm-6">
-          <canvas id="canvas_diagramm" style="border:1px solid #E65858;border-radius:4px;"></canvas>
-      </div>
-  </div>
-
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"defer></script>
     <script src="script.js"></script>

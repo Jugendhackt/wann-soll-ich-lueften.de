@@ -120,28 +120,28 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
 
     if max_points == 10:
         if points <= 2:
-            index = "Auf keinen Fall!"
+            index = "Erst morgen wieder!"
         if points == 4:
-            index = "Bitte nicht!"
+            index = "Demnächst!"
         if points == 6:
-            index = "Wenn du es eilig hast"
+            index = "Jetzt, wenn du es eilig hast"
         if points == 8:
-            index = "Kann man machen"
+            index = "Jetzt"
         if points == 10:
-            index = "Hervoragende Bedingungen"
+            index = "Jetzt sofort"
     else:
         if points == 0:
-            index = "Auf keinen Fall!"
+            index = "Erst morgen wieder!"
         if points == 2:
-            index = "Bitte nicht!"
+            index = "Demnächst!"
         if points == 4:
-            index = "Wenn du es eilig hast"
+            index = "Jetzt, wenn du es eilig hast"
         if points == 6:
-            index = "Kann man machen"
+            index = "Jetzt"
         if points == 8:
-            index = "Hervoragende Bedingungen"
+            index = "Jetzt sofort"
 
-    return max_points, points
+    return max_points, points, index
 
 
 if __name__ == '__main__':
