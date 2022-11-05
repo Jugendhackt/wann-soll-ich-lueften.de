@@ -36,11 +36,16 @@ def lueften():
 def luft():
     country = request.args.get('country')
     luft = backend.get_data(country)
+    aqi = luft['AQI']
+    averageaqi = backend.average_germany('aqi')
+    lueften = 'Ja'
+    #if aqi > averageaqi : 
+    #    lueften = 'Nein'
 
     Stationsname = luft['Station Name']
     Updatestatus = luft['Last Update']
     quality = luft['Air Quality']
-    lueften = 'Ja'
+
 
     return render_template('daten.html',Stationsname = Stationsname,Updatestatus = Updatestatus,quality = quality,lueften = lueften)
 

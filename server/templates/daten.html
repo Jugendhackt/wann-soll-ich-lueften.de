@@ -18,15 +18,6 @@
         </p>
     </div>
 
-    <div class="row">
-        <div id="map" class="col-sm-6">
-            
-        </div>
-        <div class="col-sm-6">
-            <canvas id="canvas_diagramm" style="border:1px solid #E65858;border-radius:4px;"></canvas>
-        </div>
-    </div>
-
     <div>
         <p>Luftqualität: {{ quality }}</p>
         <p>Sollte ich jetzt lüften: {{ lueften }}</p>
@@ -34,7 +25,16 @@
         <p>Letztes Update: {{ Updatestatus }}</p>
     </div>
 
-    <!--{'AQI': 20, 'Air Quality': 'Gut', 'Station Name': 'Köln Turiner Straße, Germany', 'Station ID': 6099, 'Last Update': '2022-11-05 13:00:00', 'PM2.5': 30, 'PM10': 20-->
+
+    <div class="row">
+      <div id="map" class="col-sm-6">
+          
+      </div>
+      <div class="col-sm-6">
+          <canvas id="canvas_diagramm" style="border:1px solid #E65858;border-radius:4px;"></canvas>
+      </div>
+  </div>
+
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"defer></script>
     <script src="script.js"></script>
