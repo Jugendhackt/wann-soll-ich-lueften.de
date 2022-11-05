@@ -38,7 +38,7 @@ def luft():
     luft = backend.get_data(country)
     aqi = luft['AQI']
     averageaqi = backend.average_germany('AQI')
-    lueften = 1
+    lueften = 0
     #if aqi > averageaqi : 
     #    lueften = 'Nein'
     if averageaqi is None :
