@@ -141,10 +141,7 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if points == 8:
             index = "Hervoragende Bedingungen"
 
-
-    return index
-
-
+    return max_points, points
 
 
 if __name__ == '__main__':
