@@ -16,6 +16,7 @@ def get_data(location):
     try:
         pm25 = None
         pm10 = None
+        no2 = None
         air_quality_index = get_data['data']['aqi']
         station_name = get_data['data']['city']['name']
         station_id = get_data['data']['idx']
@@ -30,6 +31,10 @@ def get_data(location):
             pm10 = get_data['data']['iaqi']['pm10']['v']
         except:
             pass
+        try:
+            no2 = get_data['data']['iaqi']['no2']['v']
+        except:
+            pass
         index = check_aqi(air_quality_index)
         data = {
             "AQI": air_quality_index,
@@ -38,7 +43,8 @@ def get_data(location):
             "Station ID": station_id,
             "Last Update": last_update,
             "PM2.5": pm25,
-            "PM10": pm10
+            "PM10": pm10,
+            "No2": no2
 
         }
         return data
@@ -63,4 +69,5 @@ def check_aqi(aqi):
     return index
 
 
-get_data("Köln")
+data = get_data("Dresden")
+print(data)
