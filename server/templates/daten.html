@@ -14,8 +14,18 @@
 
     <div  class="center">
       <center> 
-      <h1 class="display-1"><b>Wann soll ich lüften?</b></h1> 
-      <p class="display-3"><b>{{ lueften }}</b></p>
+      <h1 class="display-1"><b>Wann soll ich lüften?</b></h1>
+      
+      <p class="display-3"><b>
+
+        {% if lueften == 0 %}
+          <span class="badge text-bg-success">Jetzt!</span>
+        
+        {% else %}
+          <span class="badge text-bg-danger">Später</span>
+        {% endif %}
+      
+      </b></p>
       </center>  
     </div>
     <hr>
