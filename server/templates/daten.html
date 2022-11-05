@@ -12,18 +12,21 @@
 
   <body>
 
-    <div class="center">
-        <p>
-            <h1 class="display-1"><b>Wann soll ich lüften?</b></h1> 
-        </p>
+    <div  class="center">
+      <center> 
+      <h1 class="display-1"><b>Wann soll ich lüften?</b></h1> 
+      <p class="display-3"><b>{{ lueften }}</b></p>
+      </center>  
     </div>
+    <hr>
 
+    <center>
     <div>
-        <p>Luftqualität: {{ quality }}</p>
-        <p>Sollte ich jetzt lüften: {{ lueften }}</p>
-        <p>Stationsname: {{ Stationsname }}</p>
-        <p>Letztes Update: {{ Updatestatus }}</p>
+        <p class="display-5">Luftqualität: <b>{{ quality }}</b></p>
+        <p class="display-5">Stationsname: <b>{{ Stationsname }}</b></p>
+        <p class="display-5">Letztes Update: <b>{{ Updatestatus }}</b></p>
     </div>
+    </center>
 
 
     <div class="row">
