@@ -90,6 +90,68 @@ def average_germany(value):
     except:
         return None
 
+def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
+    points = 0
+    max_points = 10
+    index = ""
+    city_no2 = data['No2']
+    city_pm25 = data['PM2.5']
+    city_pm10 = data['PM10']
+    city_aqi = data['AQI']
+
+    if not city_no2 == None:
+        if city_no2 < no2_avg:
+            points += 2
+    else:
+        max_points -= 2
+    if not city_pm10 == None:
+        if city_pm10 < pm10_avg:
+            points += 2
+    else:
+        max_points -=2
+    if not city_pm25 == None:
+        if city_pm25 < pm25_avg:
+            points += 2
+    else:
+        max_points -= 2
+    if not city_aqi == None:
+        if city_aqi < aqi_avg:
+            points += 4
+
+    if max_points == 10:
+        if points <= 2:
+            index = "Auf keinen Fall!"
+        if points == 4:
+            index = "Bitte nicht!"
+        if points == 6:
+            index = "Wenn du es eilig hast"
+        if points == 8:
+            index = "Kann man machen"
+        if points == 10:
+            index = "Hervoragende Bedingungen"
+    else:
+        if points == 0:
+            index = "Auf keinen Fall!"
+        if points == 2:
+            index = "Bitte nicht!"
+        if points == 4:
+            index = "Wenn du es eilig hast"
+        if points == 6:
+            index = "Kann man machen"
+        if points == 8:
+            index = "Hervoragende Bedingungen"
+
+
+    return index
+
+
+
 
 if __name__ == '__main__':
-    average_germany("No2")
+    data= get_data("Köln")
+    avg_aqi = average_germany("AQI")
+    avg_pm10 = average_germany("PM10")
+    avg_pm25 = average_germany("PM2.5")
+    avg_no2 = average_germany("No2")
+    scale_germany(avg_aqi, avg_no2, avg_pm25, avg_pm10, data)
+
