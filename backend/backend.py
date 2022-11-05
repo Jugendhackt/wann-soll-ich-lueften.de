@@ -41,7 +41,7 @@ def get_data(location):
             "PM10": pm10
 
         }
-        print(data)
+        return data
     except TypeError:
         status = get_data['status']
         context = get_data['data']
@@ -63,4 +63,4 @@ def check_aqi(aqi):
     return index
 
 
-get_data("Berlin")
+get_data("Köln")
