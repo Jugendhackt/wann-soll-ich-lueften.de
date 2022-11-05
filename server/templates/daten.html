@@ -18,11 +18,10 @@
       
       <p class="display-3"><b>
 
-        {% if lueften == 0 %}
+        {% if lueften <= 0 %}
           <span class="badge text-bg-success">Jetzt!</span>
-        
         {% else %}
-          <span class="badge text-bg-danger">Später</span>
+          <span class="badge text-bg-warning">Wahrscheinlich in {{ lueften }} Minuten!</span>
         {% endif %}
       
       </b></p>
