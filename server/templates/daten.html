@@ -39,6 +39,53 @@
     </div>
     </center>
 
+    <center>
+      {% if scale >= 8 %}
+        <img src="https://mood.alpaka.space/static/alpaka/alpaka-sparkles.gif" style="width: 23%; height: auto" alt="Alpaka Sparkles" />
+      {% elif scale <= 2 %}
+        <img src="https://mood.alpaka.space/static/alpaka/alpaka-tired.gif" style="width: 23%; height: auto" alt="Alpaka Tired" />
+      {% else %}
+        <img src="https://mood.alpaka.space/static/alpaka/alpaka-flushed.gif" style="width: 23%; height: auto" alt="Alpaka Flushed" />
+      {% endif %}
+    </center>
+
+    <footer class="bg-light text-center text-lg-start fixed-bottom" style="width: 100%">
+
+      <!--<div class="container p-4">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Unser Projekt</h5>
+  
+            <p>
+              Das Projekt "Wann soll ich lüften?" ist im Rahmen von Jugenhackt Köln Hybrid 2022 entstanden.
+              <br>
+              Die Teilnehmenden: Luis, Leandro, Julie
+              <br>
+              Die Mentoren: Marcel, Jonas, David
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Was macht unser Projekt?</h5>
+  
+            <p>
+              Unsere Webseite gibt anhand einer eigenen Skala die Luftqualität einer Stadt an und beantwortet die Frage
+              wann man anhand von Werten wie z.B. der Feinstaubbelastung lüften sollte.
+              Man gibt einfach eine Stadt ein und erhält alle, unserer Meinung nach wichtigen, Werte.
+              <br>
+              Viel Spaß! ;)
+            </p>
+          </div>
+        </div>
+      </div>-->
+  
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <a class="text-dark" href="https://github.com/Jugendhackt/wann-soll-ich-lueften.de">Quellcode-Github</a>
+        ;
+        <a class="text-dark" href="https://jugendhackt.org/impressum/">Impressum-Jugendhackt</a>
+        ; Alpaca Emoji desigend by Michelle Posmyk, Animation by frej CC-BY 4.0
+      </div>
+    </footer>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"defer></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

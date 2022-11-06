@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta author="" conten="Jugendhackt Köln">
+  <meta author="" content="Jugendhackt Köln">
   <title>Wann-soll-ich-lueften?</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,48 +13,74 @@
 
 <body>
 
-  <main>
+  <div class="center">
+    <center>
+      <h1 class="display-1"><b>Wann soll ich lüften?</b></h1>
+    </center>
+  </div>
 
-    <div class="center">
-      <center>
-        <h1 class="display-1"><b>Wann soll ich lüften?</b></h1>
-      </center>
+  <center>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <label for="country" class="form-label">Gib deine Stadt ein:</label>
+        <form class="form-inline" action="/luft" method="get">
+          <div class="input-group mb-3">
+            <input name="country" class="form-control mr-sm-2" type="text" placeholder="Stadt...">
+            <button class="btn btn-success" type="submit">Senden</button>
+          </div>
+        </form>
+
+        {% if Error %}
+        <div class="alert alert-danger" role="alert">
+          Es sind keine Daten für diese Stadt verfügbar!
+        </div>
+        {% endif %}
+
+      </div>
+
+      <div class="col-4"></div>
+    </div>
+  </center>
+
+  <footer class="bg-light text-center text-lg-start fixed-bottom" style="width: 100%">
+
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Unser Projekt</h5>
+
+          <p>
+            Das Projekt "Wann soll ich lüften?" ist im Rahmen von Jugenhackt Köln Hybrid 2022 entstanden.
+            <br>
+            Die Teilnehmenden: Luis, Leandro, Julie
+            <br>
+            Die Mentoren: Marcel, Jonas, David
+          </p>
+        </div>
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Was macht unser Projekt?</h5>
+
+          <p>
+            Unsere Webseite gibt anhand einer eigenen Skala die Luftqualität einer Stadt an und beantwortet die Frage
+            wann man anhand von Werten wie z.B. der Feinstaubbelastung lüften sollte.
+            Man gibt einfach eine Stadt ein und erhält alle, unserer Meinung nach wichtigen, Werte.
+            <br>
+            Viel Spaß! ;)
+          </p>
+        </div>
+      </div>
     </div>
 
-    <center>
-      <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-          <label for="country" class="form-label">Gib deine Stadt ein:</label>
-          <form class="form-inline" action="/luft" method="get">
-            <div class="input-group mb-3">
-              <input name="country" class="form-control mr-sm-2" type="text" placeholder="Stadt...">
-              <button class="btn btn-success" type="submit">Senden</button>
-            </div>
-          </form>
-
-          {% if Error %}
-          <div class="alert alert-danger" role="alert">
-            Es sind keine Daten für diese Stadt verfügbar!
-          </div>
-          {% endif %}
-
-        </div>
-
-        <div class="col-4"></div>
-      </div>
-    </center>
-
-
-
-  </main>
-
-  <footer class="bg-light text-center text-lg-start fixed-bottom w-100">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      <a class="text-dark" href="https://github.com/Jugendhackt/wann-soll-ich-lueften.de">Quellcode</a>
+      <a class="text-dark" href="https://github.com/Jugendhackt/wann-soll-ich-lueften.de">Quellcode-Github</a>
+      ;
+      <a class="text-dark" href="https://jugendhackt.org/impressum/">Impressum-Jugendhackt</a>
       ; Alpaca Emoji desigend by Michelle Posmyk CC-BY 4.0
     </div>
   </footer>
+
+
 
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
