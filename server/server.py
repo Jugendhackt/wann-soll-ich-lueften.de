@@ -61,4 +61,4 @@ if __name__ == '__main__':
     avg_pm25 = backend.average_germany("PM2.5")
     avg_no2 = backend.average_germany("No2")
 
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
