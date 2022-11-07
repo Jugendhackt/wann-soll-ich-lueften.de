@@ -1,8 +1,7 @@
 import json
 
-
-
 import requests
+
 
 def get_data(location):
     TOKEN = "156d754bf9a6f2fe5e9464886ab39463bdf88a06"
@@ -53,15 +52,16 @@ def get_data(location):
         status = get_data['status']
         context = get_data['data']
 
+
 def check_aqi(aqi):
     index = "Not defined"
     if aqi <= 50:
         index = "Gut"
     elif aqi >= 51 and aqi <= 100:
         index = "Mäßig"
-    elif aqi >= 101 and aqi <=150:
+    elif aqi >= 101 and aqi <= 150:
         index = 'Ungesund für empfindliche Personengruppen'
-    elif aqi >= 151 and aqi <=200:
+    elif aqi >= 151 and aqi <= 200:
         index = "Ungesund"
     elif aqi >= 201 and aqi <= 300:
         index = 'Sehr Ungesund'
@@ -85,10 +85,11 @@ def average_germany(value):
                 data = data + city_data
             else:
                 city_list_len -= 1
-        data = data/city_list_len
+        data = data / city_list_len
         return data
     except:
         return None
+
 
 def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
     points = 0
@@ -108,7 +109,7 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if city_pm10 < pm10_avg:
             points += 2
     else:
-        max_points -=2
+        max_points -= 2
     if not city_pm25 == None:
         if city_pm25 < pm25_avg:
             points += 2
@@ -154,10 +155,9 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
 
 
 if __name__ == '__main__':
-    data= get_data("Köln")
+    data = get_data("Köln")
     avg_aqi = average_germany("AQI")
     avg_pm10 = average_germany("PM10")
     avg_pm25 = average_germany("PM2.5")
     avg_no2 = average_germany("No2")
     scale_germany(avg_aqi, avg_no2, avg_pm25, avg_pm10, data)
-
