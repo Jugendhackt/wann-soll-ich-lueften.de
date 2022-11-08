@@ -44,18 +44,22 @@ def lueften():
 
 @app.route('/luft')
 def luft():
-    country = request.args.get('country')
     try:
+        country = request.args.get('country')
         luft = backend.get_data(country)
-        aqi = luft['AQI']
-        max_scale, scale, index = backend.scale_germany(avg_aqi, avg_no2, avg_pm25, avg_pm10, luft)
-
+        print(luft)
         Stationsname = luft['Station Name']
         Updatestatus = luft['Last Update']
         quality = luft['Air Quality']
+        forecast_1_avg_pm25 = luft['Forecast PM2.5 Avg']
+        forecast_1_avg_pm10 = luft['Forecast PM10 Avg']
+
+        max_scale, scale, index, forecast_day1 = backend.scale_germany(avg_aqi, avg_no2, avg_pm25, avg_pm10, luft)
 
         return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
-                               lueften=lueften, max_scale=max_scale, scale=scale, index=index)
+                               lueften=lueften, max_scale=max_scale, scale=scale, index=index,
+                               forecast_day1_index=forecast_day1, forecast_1_avg_pm25=forecast_1_avg_pm25,
+                               forecast_1_avg_pm10=forecast_1_avg_pm10)
     except:
         return render_template('main.html', Error=True)
 
