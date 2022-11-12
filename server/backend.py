@@ -138,11 +138,11 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         points_forecast += 2
 
     if points_forecast == 0:
-        forecast_day1_index = "Morgen scheint kein guter Tag für's lüften zu sein!"
+        forecast_day1_index = "Kein guter Tag"
     elif points_forecast == 2:
-        forecast_day1_index = "Morgen kannst du lüften!"
+        forecast_day1_index = "Guter Tag"
     elif points_forecast == 4:
-        forecast_day1_index = "Morgen ist der perfekte Tag zum lüften!"
+        forecast_day1_index = "Perfekter Tag"
 
     if max_points == 10:
         if points <= 2:
