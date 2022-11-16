@@ -176,7 +176,7 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if points == 6:
             index = "Jetzt sofort"
 
-    return max_points, points, index, forecast_day1_index
+    return max_points, points, index, forecast_day1_index, points_forecast
 
 
 if __name__ == '__main__':

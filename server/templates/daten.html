@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <meta author="" conten="Jugendhackt Köln">
     <title>Wann-soll-ich-lueften?</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
@@ -38,16 +38,18 @@
         <p class="display-5">Letztes Update: <b>{{ Updatestatus }}</b></p>
         <br>
         <p class="display-5">Vorhersage (Morgen):</p>
-        <p class="display-5">Kann man lüften: <b>{{ forecast_day1_index }}</b></p>
+      <p class="display-5">Wir sagen: Morgen ist ein <b>{{ forecast_day1_index }}</b> um zu lüften</p>
         <p class="display-5">Durchnitt der PM10 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm10 }}</b></p>
         <p class="display-5">Durchnitt der PM2.5 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm25 }}</b></p>
 
 
 
     </div>
+      <button class="btn btn-success" onclick="window.location.href='/';">Zurück</button>
     </center>
 
     <center>
+      <br>
       {% if scale >= 8 %}
         <img src="https://mood.alpaka.space/static/alpaka/alpaka-sparkles.gif" style="width: 23%; height: auto" alt="Alpaka Sparkles" />
       {% elif scale <= 2 %}

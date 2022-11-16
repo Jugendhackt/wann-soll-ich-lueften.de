@@ -22,6 +22,10 @@ app = Flask(__name__, template_folder="templates")
 def home():
     return render_template('main.html')
 
+@app.route("/more")
+def was():
+    return render_template('more.html')
+
 
 @app.route('/style.css')
 def style():
@@ -54,12 +58,12 @@ def luft():
         forecast_1_avg_pm25 = luft['Forecast PM2.5 Avg']
         forecast_1_avg_pm10 = luft['Forecast PM10 Avg']
 
-        max_scale, scale, index, forecast_day1 = backend.scale_germany(avg_aqi, avg_no2, avg_pm25, avg_pm10, luft)
+        max_scale, scale, index, forecast_day1, points_forecast = backend.scale_germany(avg_aqi, avg_no2, avg_pm25, avg_pm10, luft)
 
         return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
                                lueften=lueften, max_scale=max_scale, scale=scale, index=index,
                                forecast_day1_index=forecast_day1, forecast_1_avg_pm25=forecast_1_avg_pm25,
-                               forecast_1_avg_pm10=forecast_1_avg_pm10)
+                               forecast_1_avg_pm10=forecast_1_avg_pm10, points_forecast= points_forecast)
     except:
         return render_template('main.html', Error=True)
 
