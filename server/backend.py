@@ -3,15 +3,14 @@ import json
 import requests
 
 
-def get_data(location):
+def get_data(location, message):
     TOKEN = "156d754bf9a6f2fe5e9464886ab39463bdf88a06"
 
     URL = f"https://api.waqi.info/feed/{location}/?token={TOKEN}"
-    print("Getting Data...")
+    print(f"Getting Data...      Called by {message}")
     response = requests.get(URL)
     response_data = response.text
     get_data = json.loads(response_data)
-    print(get_data)
     print("Loading Data...")
     pm25 = None
     pm10 = None
@@ -89,12 +88,25 @@ def average_germany(value):
             city_list[n] = city_list[n].replace("\n", "")
         for city in range(city_list_len):
             city_to_get_data_of = city_list[city]
-            city_data = get_data(city_to_get_data_of)[value]
+            city_data = get_data(city_to_get_data_of, message="Average Germany Function")[value]
             if not city_data == None:
                 data = data + city_data
             else:
                 city_list_len -= 1
         data = data / city_list_len
+        print(data)
+        if value == "AQI":
+            with open("data/avg_aqi", "w") as avg_aqi:
+                avg_aqi.write(str(data))
+        elif value == "PM10":
+            with open("data/avg_pm10", "w") as avg_pm10:
+                avg_pm10.write(str(data))
+        elif value == "PM2.5":
+            with open("data/avg_pm25", "w") as avg_pm25:
+                avg_pm25.write(str(data))
+        elif value == "No2":
+            with open("data/avg_no2", "w") as avg_no2:
+                avg_no2.write(str(data))
         return data
     except:
         return None
@@ -138,7 +150,7 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         points_forecast += 2
 
     if points_forecast == 0:
-        forecast_day1_index = "Kein guter Tag"
+        forecast_day1_index = "Kein Guter Tag"
     elif points_forecast == 2:
         forecast_day1_index = "Guter Tag"
     elif points_forecast == 4:
@@ -176,9 +188,9 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if points == 6:
             index = "Jetzt sofort"
 
-    return max_points, points, index, forecast_day1_index, points_forecast
+    return max_points, points, index, forecast_day1_index
 
 
 if __name__ == '__main__':
-    data = get_data("Köln")
+    data = get_data("Köln", "Main")
 
