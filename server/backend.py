@@ -1,11 +1,15 @@
 import json
 
 import requests
+import prettytable
+
+list = prettytable.PrettyTable()
+list.field_names = ["Stadt", "Aufgerufen (Mal)"]
+list.set_style(prettytable.PLAIN_COLUMNS)
 
 
 def get_data(location, message):
     TOKEN = "156d754bf9a6f2fe5e9464886ab39463bdf88a06"
-
     URL = f"https://api.waqi.info/feed/{location}/?token={TOKEN}"
     print(f"Getting Data...      Called by {message}")
     response = requests.get(URL)
@@ -42,12 +46,33 @@ def get_data(location, message):
     except Exception as error:
         pass
     index = check_aqi(air_quality_index)
+    if "ö" in location:
+        new_location = location.replace("ö", "oe")
+    elif "ä" in location:
+        new_location = location.replace("ä", "ae")
+    elif "ü" in location:
+        new_location = location.replace("ü", "ue")
+    else:
+        new_location = location
+    try:
+        with open(f"data/{new_location}", "r") as data_loc:
+            loc_request = int(data_loc.read())
+        with open(f"data/{new_location}", "w") as data_loc_w_n:
+            new_loc_r = loc_request = loc_request + 1
+            print(new_loc_r)
+            data_loc_w_n.write(str(new_loc_r))
+    except:
+        with open(f"data/{new_location}", "w") as data_loc_w:
+            data_loc_w.write("1")
+            new_loc_r = "1"
+    list.add_row([new_location, new_loc_r])
     air_quality_data = {
         "AQI": air_quality_index,
         "Air Quality": index,
         "Station Name": station_name,
         "Station ID": station_id,
         "Last Update": last_update,
+        "Requests": new_loc_r,
         "PM2.5": pm25,
         "PM10": pm10,
         "No2": no2,
@@ -59,7 +84,9 @@ def get_data(location, message):
     print(air_quality_data)
     return air_quality_data
 
-
+def get_list():
+    with open("templates/table.html", "w") as table_write:
+        table_write.write(list.get_html_string(attributes={"id":"my_table", "class":"red_table"}, end=10, sortby="Aufgerufen (Mal)", reversesort=True))
 
 def check_aqi(aqi):
     index = "Not defined"
@@ -162,35 +189,34 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if points == 4:
             index = "Demnächst!"
         if points == 6:
-            index = "Jetzt, wenn du es eilig hast"
+            index = "Wenn du es eilig hast"
         if points == 8:
             index = "Jetzt"
         if points == 10:
-            index = "Jetzt sofort"
+            index = "Sofort"
     elif max_points == 8:
         if points == 0:
             index = "Erst morgen wieder!"
         if points == 2:
             index = "Demnächst!"
         if points == 4:
-            index = "Jetzt, wenn du es eilig hast"
+            index = "Wenn du es eilig hast"
         if points == 6:
             index = "Jetzt"
         if points == 8:
-            index = "Jetzt sofort"
+            index = "Sofort"
     elif max_points == 6:
         if points == 0:
             index = "Erst morgen wieder!"
         if points == 2:
-            index = "Jetzt, wenn du es eilig hast"
+            index = "Wenn du es eilig hast"
         if points == 4:
             index = "Jetzt"
         if points == 6:
-            index = "Jetzt sofort"
+            index = "Sofort"
 
     return max_points, points, index, forecast_day1_index
 
 
 if __name__ == '__main__':
     data = get_data("Köln", "Main")
-

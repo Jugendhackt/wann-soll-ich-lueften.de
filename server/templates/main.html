@@ -2,7 +2,12 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+          $(function(){
+            $("#includedContent").load("table.html");
+          });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=0.5">
   <meta author="" content="Jugendhackt Köln">
   <title>Wann-soll-ich-lueften?</title>
@@ -38,6 +43,10 @@
         </div>
         {% endif %}
 
+        <br>
+        <br>
+        <p class="display-5"><b>Top 10:</b> Meistgesuchte Städte</p>
+        <div class="display-7" id="includedContent"></div>
       </div>
 
       <div class="col-4"></div>
@@ -71,7 +80,7 @@
     </div>
 
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      Version 2.1.5
+      Version 2.2
       ;
       <a class="text-dark" href="https://github.com/Jugendhackt/wann-soll-ich-lueften.de">Quellcode-Github</a>
       ;

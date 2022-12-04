@@ -33,14 +33,21 @@
 
     <center>
     <div>
-        <p class="display-5">Luftqualität: <b>{{ scale }}/{{ max_scale }}</b></p>
+        <p class="display-3">Luftqualität: <b>{{ scale }}/{{ max_scale }}</b></p>
         <p class="display-5">Stationsname: <b>{{ Stationsname }}</b></p>
         <p class="display-5">Letztes Update: <b>{{ Updatestatus }}</b></p>
         <br>
-        <p class="display-5">Vorhersage (Morgen):</p>
+        <p class="display-3">Vorhersage (Morgen):</p>
       <p class="display-5">Wir sagen: Morgen ist ein <b>{{ forecast_day1_index }}</b> um zu lüften</p>
         <p class="display-5">Durchnitt der PM10 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm10 }}</b></p>
         <p class="display-5">Durchnitt der PM2.5 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm25 }}</b></p>
+      <br>
+      <br>
+      <br>
+
+
+      <p class="display-3"><b>{{ country }}</b> wurde schon:</p>
+      <p class="display-5"><b>{{ requests }}</b>. Mal gesucht!</p>
 
 
 
@@ -89,7 +96,7 @@
       </div>-->
   
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        Version 2.1.5
+        Version 2.2
         ;
         <a class="text-dark" href="https://github.com/Jugendhackt/wann-soll-ich-lueften.de">Quellcode-Github</a>
         ;
