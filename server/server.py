@@ -31,10 +31,6 @@ def style():
 @app.route('/table.html')
 def table():
     return render_template("table.html", encoding='unicode_escape')
-@app.route('/script.js')
-def script():
-    return render_template('script.js')
-
 
 # http://localhost:5000/lueften.json?stadt=Berlin
 @app.route('/lueften.json')

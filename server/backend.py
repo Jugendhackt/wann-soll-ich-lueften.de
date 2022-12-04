@@ -64,7 +64,7 @@ def get_data(location, message):
     except:
         with open(f"data/{new_location}", "w") as data_loc_w:
             data_loc_w.write("1")
-            new_loc_r = "1"
+            new_loc_r = 1
     list.add_row([new_location, new_loc_r])
     air_quality_data = {
         "AQI": air_quality_index,
