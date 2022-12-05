@@ -61,6 +61,12 @@ def get_data(location, message):
             new_loc_r = loc_request = loc_request + 1
             print(new_loc_r)
             data_loc_w_n.write(str(new_loc_r))
+        try:
+            print(list.sort_key(new_location))
+            print(list)
+
+        except:
+            pass
     except:
         with open(f"data/{new_location}", "w") as data_loc_w:
             data_loc_w.write("1")
