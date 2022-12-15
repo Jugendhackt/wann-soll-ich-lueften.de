@@ -1,3 +1,12 @@
+#News
+Updated 15.12.22
+Hello everyone!
+I wanted to tell you that I had to shut down the servers for wann-soll-lüften.de. I can't pay the server costs at the moment. We think that the website will be back online in 2-3 months. I am very sorry that I had to take this step. But at the moment there is no other way. Nevertheless, we will continue to work and update when-soll-ich-lüften.de. I will notify you when the servers are up and running again.
+
+Thanks!
+Luis Schuimer and the rest of the team
+
+
 # wann-soll-ich-lueften.de
 WebApp suggesting the best time to vent your apartment
 
