@@ -1,10 +1,10 @@
 # News
-# Updated 15.12.22
+# Updated 18.12.22
 Hello everyone!
-I wanted to tell you that I had to shut down the servers for wann-soll-lüften.de. I can't pay the server costs at the moment. We think that the website will be back online in 2-3 months. I am very sorry that I had to take this step. But at the moment there is no other way. Nevertheless, we will continue to work and update wann-soll-ich-lüften.de. I will notify you when the servers are up and running again.
+a few days have passed without whann-soll-ich-lüften.de and there is news again. After some writing around in the JugendHackt community, the website was brought back online by some mentors (Philip, Ties and Jonas). Me and everyone else on the wann-soll-ich-lüften team say thank you to the mentors. Without you, the website would be offline for several months. Many thanks again to Jonas who owns the server and now hosts the website.
 
 Thanks!
-Luis Schuimer and the rest of the team
+Luis Schuimer
 
 
 # wann-soll-ich-lueften.de
