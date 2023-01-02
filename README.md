@@ -3,23 +3,23 @@
 
 Post 1.1.23:
 
-Hallo alle Zuammen!
-Ich möchte nun ankündigen was sich in dem Jahr 2023 ändern wird.
-Zuerst werde ich vielleicht wieder die alten server für wann-soll-ich-lüften.de wieder wieder hochfahren. Später im Jahr sind folgende neue Funktionen geplant!
-- Eine JSON API die durch einfache und vertäntliche Dokumentation gut zu benutzen ist
-    - Damit kann man einfach auf unsere Daten zuugegriffen werden 
-       die unsere Skala und weitere Funktionen beinhalten 
-- Eine Stündliche Vorhersage der Luftqualität durch eine KI
-- Eine Benachichtigung über E-Mail oder vielleicht SMS wann die 
-  luftquallität der angegebenen Bedingung entspricht.
+Hello everyone!
+I would now like to announce what will change in 2023.
+First, I might start up the old servers again for wann-soll-ich-lüften.de. The following new features are planned for later in the year!
+- A JSON API that is easy to use thanks to simple and clear documentation
+     - With this you can easily access our data
+        which include our scale and other functions
+- An hourly air quality forecast by an AI
+- A notification via email or perhaps SMS when the
+   air quality meets the specified condition.
 
-Weitere Tests:
-- Ein Fenster was sich automatisch offnet
-    -Diese soll mit wann-soll-ich-lüften.de zusammenarbeiten
+More tests:
+- A window that opens automatically
+     -This should work together with wann-soll-ich-lüften.de
 
-Es könnten noch weitere Funktionen kommen die nicht auf der Liste stehen.
- 
-Danke!
+There may be other features that are not on the list.
+
+Thanks!
 Luis Schuimer
 
 Post 18.12.22:
