@@ -2,6 +2,7 @@
 # Updated 2.1.23
 
 Post 1.1.23:
+
 Hallo alle Zuammen!
 Ich möchte nun ankündigen was sich in dem Jahr 2023 ändern wird.
 Zuerst werde ich vielleicht wieder die alten server für wann-soll-ich-lüften.de wieder wieder hochfahren. Später im Jahr sind folgende neue Funktionen geplant!
@@ -17,11 +18,12 @@ Weitere Tests:
     -Diese soll mit wann-soll-ich-lüften.de zusammenarbeiten
 
 Es könnten noch weitere Funktionen kommen die nicht auf der Liste stehen.
-
+ 
 Danke!
 Luis Schuimer
 
 Post 18.12.22:
+
 Hello everyone!
 a few days have passed without wann-soll-ich-lüften.de and there is news again. After some writing around in the JugendHackt community, the website was brought back online by some mentors (Philip, Ties and Jonas). Me and everyone else on the wann-soll-ich-lüften team say thank you to the mentors. Without you, the website would be offline for several months. Many thanks again to Jonas who owns the server and now hosts the website.
 
