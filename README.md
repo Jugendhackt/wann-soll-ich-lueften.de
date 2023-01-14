@@ -1,3 +1,36 @@
+# News
+# Updated 2.1.23
+
+Post 1.1.23:
+
+Hello everyone!
+I would now like to announce what will change in 2023.
+First, I might start up the old servers again for wann-soll-ich-lüften.de. The following new features are planned for later in the year!
+- A JSON API that is easy to use thanks to simple and clear documentation
+     - With this you can easily access our data
+        which include our scale and other functions
+- An hourly air quality forecast by an AI
+- A notification via email or perhaps SMS when the
+   air quality meets the specified condition.
+
+More tests:
+- A window that opens automatically
+     -This should work together with wann-soll-ich-lüften.de
+
+There may be other features that are not on the list.
+
+Thanks!
+Luis Schuimer
+
+Post 18.12.22:
+
+Hello everyone!
+a few days have passed without wann-soll-ich-lüften.de and there is news again. After some writing around in the JugendHackt community, the website was brought back online by some mentors (Philip, Ties and Jonas). Me and everyone else on the wann-soll-ich-lüften team say thank you to the mentors. Without you, the website would be offline for several months. Many thanks again to Jonas who owns the server and now hosts the website.
+
+Thanks!
+Luis Schuimer
+
+
 # wann-soll-ich-lueften.de
 WebApp suggesting the best time to vent your apartment
 
