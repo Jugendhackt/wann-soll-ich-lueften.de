@@ -62,8 +62,14 @@ def get_data(location, message):
             print(new_loc_r)
             data_loc_w_n.write(str(new_loc_r))
         try:
-            print(list.sort_key(new_location))
-            print(list)
+            list.sort_key(new_location)
+            del_row = list.get_string(fields=["Stadt"], end=1)
+            del_row2 = list.get_string(fields=["Stadt"],start=1, end=2)
+            print(del_row2)
+            print(del_row)
+            if del_row == new_loc_r:
+                if del_row2 == new_loc_r:
+                    list.del_row(del_row)
 
         except:
             pass
@@ -71,24 +77,29 @@ def get_data(location, message):
         with open(f"data/{new_location}", "w") as data_loc_w:
             data_loc_w.write("1")
             new_loc_r = 1
-    list.add_row([new_location, new_loc_r])
-    air_quality_data = {
-        "AQI": air_quality_index,
-        "Air Quality": index,
-        "Station Name": station_name,
-        "Station ID": station_id,
-        "Last Update": last_update,
-        "Requests": new_loc_r,
-        "PM2.5": pm25,
-        "PM10": pm10,
-        "No2": no2,
-        "Forecast PM2.5 Day": forecast_1_pm25_day,
-        "Forecast PM2.5 Avg": forecast_1_pm25_avg,
-        "Forecast PM10 Day": forecast_1_pm10_day,
-        "Forecast PM10 Avg": forecast_1_pm10_avg
-    }
-    print(air_quality_data)
-    return air_quality_data
+    if message == "API":
+        forecast_day = forecast_1_pm10_day
+        data = [station_id, station_name, last_update, new_loc_r, pm10, pm25, no2, forecast_1_pm25_day, forecast_day, forecast_1_pm25_day, forecast_1_pm25_avg, forecast_1_pm10_avg]
+        return data
+    else:
+        list.add_row([new_location, new_loc_r])
+        air_quality_data = {
+            "AQI": air_quality_index,
+            "Air Quality": index,
+            "Station Name": station_name,
+            "Station ID": station_id,
+            "Last Update": last_update,
+            "Requests": new_loc_r,
+            "PM2.5": pm25,
+            "PM10": pm10,
+            "No2": no2,
+            "Forecast PM2.5 Day": forecast_1_pm25_day,
+            "Forecast PM2.5 Avg": forecast_1_pm25_avg,
+            "Forecast PM10 Day": forecast_1_pm10_day,
+            "Forecast PM10 Avg": forecast_1_pm10_avg
+        }
+        print(air_quality_data)
+        return air_quality_data
 
 def get_list():
     with open("templates/table.html", "w") as table_write:
@@ -145,7 +156,18 @@ def average_germany(value):
         return None
 
 
-def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
+def scale_germany(data):
+    with open("data/avg_aqi", "r") as avg_aqi_r:
+        aqi_avg = float(avg_aqi_r.read())
+
+    with open("data/avg_no2", "r") as avg_no2_r:
+        no2_avg = float(avg_no2_r.read())
+
+    with open("data/avg_pm25", "r") as avg_pm25_r:
+        pm25_avg = float(avg_pm25_r.read())
+
+    with open("data/avg_pm10", "r") as avg_pm10_r:
+        pm10_avg = float(avg_pm10_r.read())
     points = 0
     max_points = 10
     index = ""
@@ -193,7 +215,7 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if points <= 2:
             index = "Erst morgen wieder!"
         if points == 4:
-            index = "Demnächst!"
+            index = "Demnaechst!"
         if points == 6:
             index = "Wenn du es eilig hast"
         if points == 8:
@@ -204,7 +226,7 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if points == 0:
             index = "Erst morgen wieder!"
         if points == 2:
-            index = "Demnächst!"
+            index = "Demnaechst!"
         if points == 4:
             index = "Wenn du es eilig hast"
         if points == 6:
@@ -221,7 +243,7 @@ def scale_germany(aqi_avg, no2_avg, pm25_avg, pm10_avg, data):
         if points == 6:
             index = "Sofort"
 
-    return max_points, points, index, forecast_day1_index
+    return max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg,pm10_avg
 
 
 if __name__ == '__main__':

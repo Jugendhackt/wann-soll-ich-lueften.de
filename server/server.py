@@ -10,11 +10,6 @@ rndmtxt = 'irgendwas halt'
 
 import backend
 
-avg_aqi = 0
-avg_pm10 = 0
-avg_pm25 = 0
-avg_no2 = 0
-
 app = Flask(__name__, template_folder="templates")
 
 
@@ -23,14 +18,66 @@ def home():
     backend.get_list()
     return render_template('main.html')
 
+@app.route('/more')
+def more():
+    return render_template('more.html')
+
+@app.route('/doc-api')
+def doc_api():
+    return render_template('doc-api.html')
+
+@app.route('/api')
+def api():
+
+    try:
+        city = request.args.get('city')
+        normaldata = backend.get_data(city, "Server")
+        data = backend.get_data(city, "API")
+        max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, pm10_avg = backend.scale_germany(
+            normaldata)
+        f_data = {
+            "Copyright": "(C)2022-2023 Wann-soll-ich-lueften.de; api.waqi.info",
+            "Data from": "api.waqi.info",
+            "Used API": "wann-soll-ich-lueften.de",
+            "Station Name": data[1],
+            "Station Id": data[0],
+            "Last Update": data[2],
+            "PM10": data[4],
+            "PM2.5": data[5],
+            "NO2": data[6],
+            "Forecast Date": data[8],
+            "Forecast PM10": data[10],
+            "Forecast PM2.5": data[11],
+            "Average AQI Germany": aqi_avg,
+            "Average PM25 Germany": pm25_avg,
+            "Average Pm10 Germany": pm10_avg,
+            "Average NO2 Germany": no2_avg,
+            "Ventilate? Index": index,
+            "Ventilate? Forecast Index": forecast_day1_index,
+            "Max Scale Points": max_points,
+            "Points reached": points
+
+
+        }
+        return jsonify(f_data)
+    except:
+        f_data = {
+            "Error": f"City {city} couldn't be found",
+            "Tipp": "Maybe look if the City is spelled correctly",
+            "Server Response": "404-City not found"
+        }
+        return jsonify(f_data)
+
 
 @app.route('/style.css')
 def style():
     return render_template('style.css')
 
+
 @app.route('/table.html')
 def table():
     return render_template("table.html", encoding='unicode_escape')
+
 
 # http://localhost:5000/lueften.json?stadt=Berlin
 @app.route('/lueften.json')
@@ -54,19 +101,7 @@ def luft():
         forecast_1_avg_pm25 = luft['Forecast PM2.5 Avg']
         forecast_1_avg_pm10 = luft['Forecast PM10 Avg']
 
-        with open("data/avg_aqi", "r") as avg_aqi_r:
-            avg_aqi = float(avg_aqi_r.read())
-
-        with open("data/avg_no2", "r") as avg_no2_r:
-            avg_no2 = float(avg_no2_r.read())
-
-        with open("data/avg_pm25", "r") as avg_pm25_r:
-            avg_pm25 = float(avg_pm25_r.read())
-
-        with open("data/avg_pm10", "r") as avg_pm10_r:
-            avg_pm10 = float(avg_pm10_r.read())
-
-        max_scale, scale, index, forecast_day1 = backend.scale_germany(avg_aqi, avg_no2, avg_pm25, avg_pm10, luft)
+        max_scale, scale, index, forecast_day1 = backend.scale_germany(luft)
 
         return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
                                lueften=lueften, max_scale=max_scale, scale=scale, index=index,
