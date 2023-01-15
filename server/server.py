@@ -90,25 +90,22 @@ def lueften():
 
 @app.route('/luft')
 def luft():
-    try:
-        country = request.args.get('country')
-        luft = backend.get_data(country, "Server")
-        print(luft)
-        requests = luft["Requests"]
-        Stationsname = luft['Station Name']
-        Updatestatus = luft['Last Update']
-        quality = luft['Air Quality']
-        forecast_1_avg_pm25 = luft['Forecast PM2.5 Avg']
-        forecast_1_avg_pm10 = luft['Forecast PM10 Avg']
+    country = request.args.get('country')
+    luft = backend.get_data(country, "Server")
+    print(luft)
+    requests = luft["Requests"]
+    Stationsname = luft['Station Name']
+    Updatestatus = luft['Last Update']
+    quality = luft['Air Quality']
+    forecast_1_avg_pm25 = luft['Forecast PM2.5 Avg']
+    forecast_1_avg_pm10 = luft['Forecast PM10 Avg']
 
-        max_scale, scale, index, forecast_day1 = backend.scale_germany(luft)
+    max_scale, scale, index, forecast_day1, aqi_avg, pm25_avg, no2_avg, pm10_avg = backend.scale_germany(luft)
 
-        return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
-                               lueften=lueften, max_scale=max_scale, scale=scale, index=index,
-                               forecast_day1_index=forecast_day1, forecast_1_avg_pm25=forecast_1_avg_pm25,
-                               forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country)
-    except:
-        return render_template('main.html', Error=True)
+    return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
+                           lueften=lueften, max_scale=max_scale, scale=scale, index=index,
+                           forecast_day1_index=forecast_day1, forecast_1_avg_pm25=forecast_1_avg_pm25,
+                           forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country)
 
 
 if __name__ == '__main__':
