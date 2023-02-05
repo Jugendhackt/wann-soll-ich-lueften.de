@@ -5,8 +5,6 @@ from flask import (
     request
 )
 
-user = 'test'
-rndmtxt = 'irgendwas halt'
 
 import backend
 
@@ -38,7 +36,6 @@ def api():
         f_data = {
             "Copyright": "(C)2022-2023 Wann-soll-ich-lueften.de; api.waqi.info",
             "Data from": "api.waqi.info",
-            "Used API": "wann-soll-ich-lueften.de",
             "Station Name": data[1],
             "Station Id": data[0],
             "Last Update": data[2],
@@ -100,13 +97,17 @@ def luft():
         quality = luft['Air Quality']
         forecast_1_avg_pm25 = luft['Forecast PM2.5 Avg']
         forecast_1_avg_pm10 = luft['Forecast PM10 Avg']
+        PM25 = luft['PM2.5']
+        PM10 = luft['PM10']
+        No2 = luft['No2']
 
         max_scale, scale, index, forecast_day1, aqi_avg, pm25_avg, no2_avg, pm10_avg = backend.scale_germany(luft)
 
         return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
                                lueften=lueften, max_scale=max_scale, scale=scale, index=index,
                                forecast_day1_index=forecast_day1, forecast_1_avg_pm25=forecast_1_avg_pm25,
-                               forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country)
+                               forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country, PM25=PM25,
+                               PM10=PM10, No2=No2, pm10_avg=round(float(pm10_avg)), pm25_avg=round(float(pm25_avg)), no2_avg=round(float(no2_avg)))
     except:
         return render_template("main.html", Error=True)
 if __name__ == '__main__':

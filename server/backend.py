@@ -184,16 +184,19 @@ def scale_germany(data):
         if city_no2 < no2_avg:
             points += 2
     else:
+        underno2 = False
         max_points -= 2
     if not city_pm10 == None:
         if city_pm10 < pm10_avg:
             points += 2
     else:
+        underpm10 = False
         max_points -= 2
     if not city_pm25 == None:
         if city_pm25 < pm25_avg:
             points += 2
     else:
+        underpm25 = False
         max_points -= 2
     if not city_aqi == None:
         if city_aqi < aqi_avg:

@@ -36,11 +36,21 @@
         <p class="display-3">Luftqualität: <b>{{ scale }}/{{ max_scale }}</b></p>
         <p class="display-5">Stationsname: <b>{{ Stationsname }}</b></p>
         <p class="display-5">Letztes Update: <b>{{ Updatestatus }}</b></p>
+
+        <p class="display-3">Daten:</p>
+        <p class="display-5">PM10: <b>{{ PM10 }} µm/m³</b></p>
+        <p class="display-5">PM25: <b>{{ PM25 }} µm/m³</b></p>
+        <p class="display-5">No2: <b>{{ No2 }}  μg/m³</b></p>
+
+        <p class="display-3">Durchschnitt Deutschland:</p>
+        <p class="display-5">Durchschnitt PM10 (gerundet): <b>{{ pm10_avg }} µm/m³</b></p>
+        <p class="display-5">Durchschnitt PM25 (gerundet): <b>{{ pm25_avg }} µm/m³</b></p>
+        <p class="display-5">Durchschnitt No2 (gerundet): <b>{{ no2_avg }} μg/m³</b></p>
         <br>
         <p class="display-3">Vorhersage (Morgen):</p>
       <p class="display-5">Wir sagen: Morgen ist ein <b>{{ forecast_day1_index }}</b> um zu lüften</p>
-        <p class="display-5">Durchnitt der PM10 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm10 }}</b></p>
-        <p class="display-5">Durchnitt der PM2.5 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm25 }}</b></p>
+        <p class="display-5">Durchnitt der PM10 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm10 }} µm/m³</b></p>
+        <p class="display-5">Durchnitt der PM2.5 (Feinstaub) Belastung: <b>{{ forecast_1_avg_pm25 }} µm/m³</b></p>
       <br>
       <br>
       <br>
@@ -96,7 +106,7 @@
       </div>-->
   
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        Version 2.3
+        Version 2.4
         ;
         © 2022-2023 Wann-soll-ich-lüften.de
         ;
