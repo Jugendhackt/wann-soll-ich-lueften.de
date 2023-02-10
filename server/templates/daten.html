@@ -15,7 +15,7 @@
     <div  class="center">
       <center> 
       <h1 class="display-1"><b>Wann soll ich lüften?</b></h1>
-      
+      <p class="display-3">Was ist mit <b>{{ country }}?</b></p>
       <p class="display-3"><b>
 
         {% if scale >= 8 %}
@@ -33,18 +33,49 @@
 
     <center>
     <div>
+
         <p class="display-3">Luftqualität: <b>{{ scale }}/{{ max_scale }}</b></p>
         <p class="display-5">Stationsname: <b>{{ Stationsname }}</b></p>
         <p class="display-5">Letztes Update: <b>{{ Updatestatus }}</b></p>
 
         <p class="display-3">Daten:</p>
-        <p class="display-5">PM10: <b>{{ PM10 }} µm/m³</b></p>
-        <p class="display-5">PM25: <b>{{ PM25 }} µm/m³</b></p>
-        <p class="display-5">No2: <b>{{ No2 }}  μg/m³</b></p>
+        {% if PM10 == None %}
+            <p class="display-5">PM10: <b>- µm/m³</b>
+        {% else %}
+            <p class="display-5">PM10: <b>{{ PM10 }} µm/m³ |</b>
+              {% if underpm10 == "↓" %}
+                <span class="badge text-bg-success">{{underpm10}}</span>
+              {% else %}
+                <span class="badge text-bg-danger">{{underpm10}}</span>
+              {% endif %}
+            </p>
+        {% endif %}
+        {% if Pm25 == None %}
+            <p class="display-5">PM2.5: <b>- µm/m³</b>
+        {% else %}
+            <p class="display-5">PM2.5: <b>{{ Pm25 }} µm/m³ |</b>
+              {% if underpm25 == "↓" %}
+                <span class="badge text-bg-success">{{underpm25}}</span>
+              {% else %}
+                <span class="badge text-bg-danger">{{underpm25}}</span>
+              {% endif %}
+            </p>
+        {% endif %}
+        {% if No2 == None %}
+            <p class="display-5">No2: <b>- μg/m³</b>
+        {% else %}
+            <p class="display-5">No2: <b>{{ No2 }}  μg/m³ |</b>
+              {% if underno2 == "↓" %}
+                <span class="badge text-bg-success">{{underno2}}</span>
+              {% else %}
+                <span class="badge text-bg-danger">{{underno2}}</span>
+              {% endif %}
+            </p>
+        {% endif %}
 
         <p class="display-3">Durchschnitt Deutschland:</p>
         <p class="display-5">Durchschnitt PM10 (gerundet): <b>{{ pm10_avg }} µm/m³</b></p>
-        <p class="display-5">Durchschnitt PM25 (gerundet): <b>{{ pm25_avg }} µm/m³</b></p>
+        <p class="display-5">Durchschnitt PM2.5 (gerundet): <b>{{ pm25_avg }} µm/m³</b></p>
         <p class="display-5">Durchschnitt No2 (gerundet): <b>{{ no2_avg }} μg/m³</b></p>
         <br>
         <p class="display-3">Vorhersage (Morgen):</p>
@@ -106,7 +137,7 @@
       </div>-->
   
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        Version 2.4
+        Version 2.4.5
         ;
         © 2022-2023 Wann-soll-ich-lüften.de
         ;

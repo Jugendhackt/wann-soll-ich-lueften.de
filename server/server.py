@@ -33,6 +33,8 @@ def api():
         data = backend.get_data(city, "API")
         max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, pm10_avg = backend.scale_germany(
             normaldata)
+        if "ä" in index:
+            index = index.replace("ä", "")
         f_data = {
             "Copyright": "(C)2022-2023 Wann-soll-ich-lueften.de; api.waqi.info",
             "Data from": "api.waqi.info",
@@ -101,13 +103,16 @@ def luft():
         PM10 = luft['PM10']
         No2 = luft['No2']
 
-        max_scale, scale, index, forecast_day1, aqi_avg, pm25_avg, no2_avg, pm10_avg = backend.scale_germany(luft)
+        max_scale, scale, index, forecast_day1, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2 = backend.scale_germany(
+            luft)
 
         return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
                                lueften=lueften, max_scale=max_scale, scale=scale, index=index,
                                forecast_day1_index=forecast_day1, forecast_1_avg_pm25=forecast_1_avg_pm25,
-                               forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country, PM25=PM25,
-                               PM10=PM10, No2=No2, pm10_avg=round(float(pm10_avg)), pm25_avg=round(float(pm25_avg)), no2_avg=round(float(no2_avg)))
+                               forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country, Pm25=PM25,
+                               PM10=PM10, No2=No2, pm10_avg=round(float(pm10_avg), 2), pm25_avg=round(float(pm25_avg), 2),
+                               no2_avg=round(float(no2_avg), 2),
+                               underpm25=underpm25, underno2=underno2, underpm10=underpm10)
     except:
         return render_template("main.html", Error=True)
 if __name__ == '__main__':

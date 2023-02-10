@@ -64,7 +64,7 @@ def get_data(location, message):
         try:
             list.sort_key(new_location)
             del_row = list.get_string(fields=["Stadt"], end=1)
-            del_row2 = list.get_string(fields=["Stadt"],start=1, end=2)
+            del_row2 = list.get_string(fields=["Stadt"], start=1, end=2)
             print(del_row2)
             print(del_row)
             if del_row == new_loc_r:
@@ -79,7 +79,8 @@ def get_data(location, message):
             new_loc_r = 1
     if message == "API":
         forecast_day = forecast_1_pm10_day
-        data = [station_id, station_name, last_update, new_loc_r, pm10, pm25, no2, forecast_1_pm25_day, forecast_day, forecast_1_pm25_day, forecast_1_pm25_avg, forecast_1_pm10_avg]
+        data = [station_id, station_name, last_update, new_loc_r, pm10, pm25, no2, forecast_1_pm25_day, forecast_day,
+                forecast_1_pm25_day, forecast_1_pm25_avg, forecast_1_pm10_avg]
         return data
     else:
         list.add_row([new_location, new_loc_r])
@@ -101,9 +102,13 @@ def get_data(location, message):
         print(air_quality_data)
         return air_quality_data
 
+
 def get_list():
     with open("templates/table.html", "w") as table_write:
-        table_write.write(list.get_html_string(attributes={"id":"my_table", "class":"red_table"}, end=10, sortby="Aufgerufen (Mal)", reversesort=True))
+        table_write.write(
+            list.get_html_string(attributes={"id": "my_table", "class": "red_table"}, end=10, sortby="Aufgerufen (Mal)",
+                                 reversesort=True))
+
 
 def check_aqi(aqi):
     index = "Not defined"
@@ -169,6 +174,9 @@ def scale_germany(data):
     with open("data/avg_pm10", "r") as avg_pm10_r:
         pm10_avg = float(avg_pm10_r.read())
     points = 0
+    underno2 = 0
+    underpm10 = 0
+    underpm25 = 0
     max_points = 10
     index = ""
     points_forecast = 0
@@ -183,21 +191,38 @@ def scale_germany(data):
     if not city_no2 == None:
         if city_no2 < no2_avg:
             points += 2
+            underno2 += 1
     else:
-        underno2 = False
         max_points -= 2
+    print(underpm25)
+    print(underno2)
+    print(underpm10)
+
     if not city_pm10 == None:
         if city_pm10 < pm10_avg:
             points += 2
+            underpm10 += 1
     else:
-        underpm10 = False
         max_points -= 2
+    print(underpm25)
+    print(underno2)
+    print(underpm10)
+
     if not city_pm25 == None:
         if city_pm25 < pm25_avg:
             points += 2
+            dif_pm25 = city_pm25 - pm25_avg / city_pm25
+            print(dif_pm25)
+            underpm25 += 1
+        else:
+            dif_pm25 = city_pm25 - pm25_avg / city_pm25
+            print(dif_pm25)
     else:
-        underpm25 = False
         max_points -= 2
+    print(underpm25)
+    print(underno2)
+    print(underpm10)
+
     if not city_aqi == None:
         if city_aqi < aqi_avg:
             points += 4
@@ -216,9 +241,9 @@ def scale_germany(data):
 
     if max_points == 10:
         if points <= 2:
-            index = "Erst morgen wieder!"
+            index = "Auf keinen Fall!"
         if points == 4:
-            index = "Demnaechst!"
+            index = "Demnächst!"
         if points == 6:
             index = "Wenn du es eilig hast"
         if points == 8:
@@ -227,9 +252,9 @@ def scale_germany(data):
             index = "Sofort"
     elif max_points == 8:
         if points == 0:
-            index = "Erst morgen wieder!"
+            index = "Auf keinen Fall!"
         if points == 2:
-            index = "Demnaechst!"
+            index = "Demnächst!"
         if points == 4:
             index = "Wenn du es eilig hast"
         if points == 6:
@@ -238,7 +263,7 @@ def scale_germany(data):
             index = "Sofort"
     elif max_points == 6:
         if points == 0:
-            index = "Erst morgen wieder!"
+            index = "Auf keinen Fall!"
         if points == 2:
             index = "Wenn du es eilig hast"
         if points == 4:
@@ -246,8 +271,25 @@ def scale_germany(data):
         if points == 6:
             index = "Sofort"
 
-    return max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg,pm10_avg
+    if underpm10 == 1:
+        underpm10 = "↓"
+    else:
+        underpm10 = "↑"
+    if underpm25 == 1:
+        underpm25 = "↓"
+    else:
+        underpm25 = "↑"
+    if underno2 == 1:
+        underno2 = "↓"
+    else:
+        underno2 = "↑"
 
+    print(underpm25)
+    print(underno2)
+    print(underpm10)
+
+
+    return max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2
 
 if __name__ == '__main__':
     data = get_data("Köln", "Main")
