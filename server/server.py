@@ -26,16 +26,15 @@ def doc_api():
 
 @app.route('/api')
 def api():
-
     try:
         city = request.args.get('city')
         normaldata = backend.get_data(city, "Server")
         data = backend.get_data(city, "API")
-        max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, pm10_avg = backend.scale_germany(
-            normaldata)
+        max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, underpm10, underpm25, underno2, pm10_avg, dif_pm10, dif_no2, dif_pm25, no2_plus, pm25_plus, pm10_plus = backend.scale_germany(normaldata)
         if "ä" in index:
             index = index.replace("ä", "")
         f_data = {
+            "Version": "0.3",
             "Copyright": "(C)2022-2023 Wann-soll-ich-lueften.de; api.waqi.info",
             "Data from": "api.waqi.info",
             "Station Name": data[1],
@@ -47,6 +46,9 @@ def api():
             "Forecast Date": data[8],
             "Forecast PM10": data[10],
             "Forecast PM2.5": data[11],
+            "Difference PM10": dif_pm10,
+            "Difference PM2.5": dif_pm25,
+            "Difference No2": dif_no2,
             "Average AQI Germany": aqi_avg,
             "Average PM25 Germany": pm25_avg,
             "Average Pm10 Germany": pm10_avg,
@@ -56,9 +58,9 @@ def api():
             "Max Scale Points": max_points,
             "Points reached": points
 
-
         }
         return jsonify(f_data)
+
     except:
         f_data = {
             "Error": f"City {city} couldn't be found",
@@ -103,7 +105,7 @@ def luft():
         PM10 = luft['PM10']
         No2 = luft['No2']
 
-        max_scale, scale, index, forecast_day1, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2 = backend.scale_germany(
+        max_scale, scale, index, forecast_day1, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2, dif_pm10, dif_no2, dif_pm25, no2_plus, pm25_plus, pm10_plus = backend.scale_germany(
             luft)
 
         return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
@@ -112,7 +114,8 @@ def luft():
                                forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country, Pm25=PM25,
                                PM10=PM10, No2=No2, pm10_avg=round(float(pm10_avg), 2), pm25_avg=round(float(pm25_avg), 2),
                                no2_avg=round(float(no2_avg), 2),
-                               underpm25=underpm25, underno2=underno2, underpm10=underpm10)
+                               underpm25=underpm25, underno2=underno2, underpm10=underpm10, dif_pm25=dif_pm25, dif_no2=dif_no2, dif_pm10=dif_pm10, no2_plus=no2_plus,
+                               pm25_plus=pm25_plus, pm10_plus=pm10_plus)
     except:
         return render_template("main.html", Error=True)
 if __name__ == '__main__':

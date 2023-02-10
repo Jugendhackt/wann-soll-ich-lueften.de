@@ -177,6 +177,12 @@ def scale_germany(data):
     underno2 = 0
     underpm10 = 0
     underpm25 = 0
+    dif_no2 = 0
+    dif_pm10 = 0
+    dif_pm25 = 0
+    no2_plus = ""
+    pm10_plus = ""
+    pm25_plus = ""
     max_points = 10
     index = ""
     points_forecast = 0
@@ -190,8 +196,15 @@ def scale_germany(data):
 
     if not city_no2 == None:
         if city_no2 < no2_avg:
+            dif_no2 = round(no2_avg - city_no2, 2)
+            print(dif_no2)
+            no2_plus = "-"
             points += 2
             underno2 += 1
+        else:
+            no2_plus = "+"
+            dif_no2 = round(city_no2 - no2_avg, 2)
+            print(dif_no2)
     else:
         max_points -= 2
     print(underpm25)
@@ -200,8 +213,15 @@ def scale_germany(data):
 
     if not city_pm10 == None:
         if city_pm10 < pm10_avg:
+            dif_pm10 = round(pm10_avg - city_pm10, 2)
+            print(dif_pm10)
+            pm10_plus = "-"
             points += 2
             underpm10 += 1
+        else:
+            pm10_plus = "+"
+            dif_pm10 = round(city_pm10 - pm10_avg, 2)
+            print(dif_pm10)
     else:
         max_points -= 2
     print(underpm25)
@@ -211,11 +231,13 @@ def scale_germany(data):
     if not city_pm25 == None:
         if city_pm25 < pm25_avg:
             points += 2
-            dif_pm25 = city_pm25 - pm25_avg / city_pm25
+            pm25_plus = "-"
+            dif_pm25 = round(pm25_avg - city_pm25, 2)
             print(dif_pm25)
             underpm25 += 1
         else:
-            dif_pm25 = city_pm25 - pm25_avg / city_pm25
+            pm25_plus = "+"
+            dif_pm25 = round(city_pm25 - pm25_avg, 2)
             print(dif_pm25)
     else:
         max_points -= 2
@@ -289,7 +311,9 @@ def scale_germany(data):
     print(underpm10)
 
 
-    return max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2
+    return max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2, \
+           dif_pm10, dif_no2, dif_pm25,\
+           no2_plus, pm25_plus, pm10_plus
 
 if __name__ == '__main__':
     data = get_data("Köln", "Main")

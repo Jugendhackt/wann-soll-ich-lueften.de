@@ -48,6 +48,7 @@
               {% else %}
                 <span class="badge text-bg-danger">{{underpm10}}</span>
               {% endif %}
+            Differenz von: <b>{{ dif_pm10 }} µm/m³ ({{pm10_plus}})</b>
             </p>
         {% endif %}
         {% if Pm25 == None %}
@@ -59,6 +60,7 @@
               {% else %}
                 <span class="badge text-bg-danger">{{underpm25}}</span>
               {% endif %}
+            Differenz von: <b>{{ dif_pm25 }} µm/m³ ({{pm25_plus}})</b>
             </p>
         {% endif %}
         {% if No2 == None %}
@@ -70,6 +72,7 @@
               {% else %}
                 <span class="badge text-bg-danger">{{underno2}}</span>
               {% endif %}
+            Differenz von: <b>{{ dif_no2 }} μg/m³ ({{no2_plus}})</b>
             </p>
         {% endif %}
 
@@ -137,7 +140,7 @@
       </div>-->
   
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        Version 2.4.5
+        Version 2.4.6
         ;
         © 2022-2023 Wann-soll-ich-lüften.de
         ;
