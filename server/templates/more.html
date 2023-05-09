@@ -2,8 +2,13 @@
 <html>
 
 <head>
+    <style>
+    body{
+    background: linear-gradient(to top, #28a745, #78d4e4);
+}
+  </style>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.5">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta author="" content="Jugendhackt Köln">
   <title>Wann-soll-ich-lueften?</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
@@ -17,38 +22,41 @@
   <div class="center">
     <center>
       <h1 class="display-1"><b>Wann soll ich lüften?</b></h1>
-        <h1 class="display-6"><b>Mehr zu unserem Projekt:</b></h1>
+      <p class="fs-5 text-muted">Mehr zu unserem Projekt:</p>
     </center>
   </div>
 
   <center>
-      <div>
-          <p class="display-7">
-              Unsere Webseite gibt anhand einer eigenen Skala und mehr als 11000 Stationen auf der Welt, die Luftqualität einer Stadt an und beantwortet die Frage
-            wann man anhand von Werten wie z.B. der Feinstaubbelastung lüften sollte. Die Skala besteht aus 10, 8 oder 6
-            Punkten je nachdem, wie viele Daten wir von der Station haben.
-            Man gibt einfach eine Stadt ein und erhält alle, unserer Meinung nach wichtigen, Werte.
-            <br>
-            Viel Spaß! ;)
-          </p>
-      </div>
-        <button class="btn btn-success" onclick="window.location.href='/';">Zurück</button>
+    <div>
+      <p class="fs-4">
+        Unsere Webseite gibt anhand einer eigenen Skala und mehr als 11.000 Stationen auf der Welt die Luftqualität einer Stadt an und beantwortet die Frage, <br>
+        wann man anhand von Werten wie z.B. der Feinstaubbelastung lüften sollte. Die Skala besteht aus 10, 8 oder 6 <br>
+        Punkten je nachdem, wie viele Daten wir von der Station haben. Man gibt einfach eine Stadt ein und erhält alle, unserer Meinung nach wichtigen, Werte. <br>
+      </p>
+      <p class="fs-4">
+        Viel Spaß! ;)
+      </p>
+      <button class="btn btn-success mt-4" onclick="window.location.href='/';">Zurück</button>
+    </div>
   </center>
+
   <footer class="bg-light text-center text-lg-start fixed-bottom" style="width: 100%">
 
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Unser Projekt</h5>
 
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      Version 2.4.6
-      ;
-      © 2022-2023 Wann-soll-ich-lüften.de
-      ;
-      <a class="text-dark" href="/doc-api">Unsere API</a>
-      ;
-      <a class="text-dark" href="https://github.com/Jugendhackt/wann-soll-ich-lueften.de">Quellcode-Github</a>
-      ;
-      <a class="text-dark" href="https://jugendhackt.org/impressum/">Impressum-Jugend-Hackt</a>
-      ; Alpaca Emoji desigend by Michelle Posmyk CC-BY 4.0;
-      <a class="text-dark" href="https://aqicn.org/">Luftdaten</a>
-      ; AQICN-API (Open Data)
+          <p>
+            Das Projekt "Wann soll ich lüften?" ist im Rahmen von Jugend-Hackt Köln Hybrid November 2022 entstanden.
+            <br>
+            Die Teilnehmenden: Luis, Leandro, Julie
+            <br>
+            Die Mentoren: Marcel, Jonas, David
+            <br>
+            Andere Mitbeteiligung und Bugfixes: SehrGuterCode (19.03.23)
+          </p>
+        </div>
+      </div>
     </div>
   </footer>

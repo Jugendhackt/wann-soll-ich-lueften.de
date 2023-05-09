@@ -92,7 +92,7 @@ def lueften():
 @app.route('/luft')
 def luft():
     try:
-        country = request.args.get('country')
+        country = request.args.get('city')
         luft = backend.get_data(country, "Server")
         print(luft)
         requests = luft["Requests"]

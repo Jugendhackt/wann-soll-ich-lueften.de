@@ -2,6 +2,11 @@
 <html>
 
   <head>
+        <style>
+    body{
+    background: linear-gradient(to top, #28a745, #78d4e4);
+}
+  </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <meta author="" conten="Jugendhackt Köln">
@@ -17,6 +22,13 @@
       <h1 class="display-1"><b>Wann soll ich lüften?</b></h1>
       <p class="display-3">Was ist mit <b>{{ country }}?</b></p>
       <p class="display-3"><b>
+          {% if scale >= 8 %}
+        <img src="https://mood.alpaka.space/static/alpaka/alpaka-sparkles.gif" style="width: 5%; height: auto" alt="Alpaka Sparkles" />
+      {% elif scale <= 2 %}
+        <img src="https://mood.alpaka.space/static/alpaka/alpaka-tired.gif" style="width: 5%; height: auto" alt="Alpaka Tired" />
+      {% else %}
+        <img src="https://mood.alpaka.space/static/alpaka/alpaka-flushed.gif" style="width: 5%; height: auto" alt="Alpaka Flushed" />
+      {% endif %}
 
         {% if scale >= 8 %}
           <span class="badge text-bg-success">{{index}}</span>
@@ -27,7 +39,8 @@
         {% endif %}
       
       </b></p>
-      </center>  
+      </center>
+    <br>
     </div>
     <hr>
 
@@ -140,9 +153,9 @@
       </div>-->
   
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        Version 2.4.6
+        Version 2.5.0 | 09-05-23
         ;
-        © 2022-2023 Wann-soll-ich-lüften.de
+        © 2022-2023 <a class="text-dark" href="https://netcast-nlc.netlify.app">NetCast NLC</a> und <a class="text-dark" href="https://jugendhackt.org">Jugend-Hackt</a>
         ;
         <a class="text-dark" href="/doc-api">Unsere API</a>
         ;
