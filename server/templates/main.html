@@ -91,9 +91,20 @@ input[type=submit] {
         <form class="form-inline" autocomplete="off" action="/luft" method="get">
           <div class="input-group mb-3">
             <input name= "city" id="myInput" class="form-control mr-sm-2 rounded-start" type="text" placeholder="Stadt... z.b. Berlin">
-            <button class="btn btn-success" type="submit">Los geht's!</button>
+            <button class="btn btn-success" type="submit" id="submitButton">Los geht's!</button>
           </div>
         </form>
+
+        <script>
+          // when pressing enter, submit form
+          var input = document.getElementById("myInput");
+          input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              $("#submitButton").click();
+            }
+          });
+        </script>
 
         {% if Error %}
         <div class="alert alert-danger" role="alert">
