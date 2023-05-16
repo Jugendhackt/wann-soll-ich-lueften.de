@@ -1,5 +1,5 @@
 # News
-# Updated 09.05.23
+# Updated 16.05.23
 Post 28.02.23:
 
 Hello to our 3rd post after we presented our goals for 2023. But today I have something new to share. We would like to prepare you for the 3.0 update. There will be one of the biggest changes we've ever made. accounts! Yes, you can create accounts and log in from the 3.0 update. You can set cities as your favorites and you can get all the data quickly. We will also look for some other API's for the data and then use them. However, this turns out to be difficult because a number of a station must be specified In the most API's. There is also another problem: We need storage space on our servers to store all login data. Currently we have 25GB of Storage. But there i still don't know how big data for 1 Account is but I will do some calculations here. But that costs money. More than I would like to pay alone. We don't know yet if you can look at voluntary advertising to support us or if you can donate. We definitely do NOT want to ask for money for a pro account with us or release data until you pay. So no worries there. 
