@@ -44,9 +44,9 @@
     </div>
     <hr>
 
-    <center>
-    <div>
 
+    <div>
+        <img src="{{ path }}" height= "500" width="650" style="float:right;"/>
         <p class="display-3">Luftqualität: <b>{{ scale }}/{{ max_scale }}</b></p>
         <p class="display-5">Stationsname: <b>{{ Stationsname }}</b></p>
         <p class="display-5">Letztes Update: <b>{{ Updatestatus }}</b></p>
@@ -88,6 +88,7 @@
             Differenz von: <b>{{ dif_no2 }} μg/m³ ({{no2_plus}})</b>
             </p>
         {% endif %}
+        <<center>
 
         <p class="display-3">Durchschnitt Deutschland:</p>
         <p class="display-5">Durchschnitt PM10 (gerundet): <b>{{ pm10_avg }} µm/m³</b></p>
@@ -106,11 +107,10 @@
       <p class="display-3"><b>{{ country }}</b> wurde schon:</p>
       <p class="display-5"><b>{{ requests }}</b>. Mal gesucht!</p>
 
-
-
+<button class="btn btn-success" onclick="window.location.href='/';">Zurück</button>
+</center>
     </div>
-      <button class="btn btn-success" onclick="window.location.href='/';">Zurück</button>
-    </center>
+
 
     <center>
       <br>
@@ -153,7 +153,7 @@
       </div>-->
   
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        Version 2.5.0 | 09-05-23
+        Version 2.5.5 | 16-05-23
         ;
         © 2022-2023 <a class="text-dark" href="https://netcast-nlc.netlify.app">NetCast NLC</a> und <a class="text-dark" href="https://jugendhackt.org">Jugend-Hackt</a>
         ;

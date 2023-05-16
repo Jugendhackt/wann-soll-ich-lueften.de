@@ -1,3 +1,5 @@
+import time
+
 from flask import (
     Flask,
     render_template,
@@ -107,6 +109,7 @@ def luft():
 
         max_scale, scale, index, forecast_day1, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2, dif_pm10, dif_no2, dif_pm25, no2_plus, pm25_plus, pm10_plus = backend.scale_germany(
             luft)
+        path = backend.make_diagram(country, PM25, PM10, No2, no2_avg, pm10_avg, pm25_avg, time=Updatestatus)
 
         return render_template('daten.html', Stationsname=Stationsname, Updatestatus=Updatestatus, quality=quality,
                                lueften=lueften, max_scale=max_scale, scale=scale, index=index,
@@ -114,9 +117,12 @@ def luft():
                                forecast_1_avg_pm10=forecast_1_avg_pm10, requests=requests, country=country, Pm25=PM25,
                                PM10=PM10, No2=No2, pm10_avg=round(float(pm10_avg), 2), pm25_avg=round(float(pm25_avg), 2),
                                no2_avg=round(float(no2_avg), 2),
-                               underpm25=underpm25, underno2=underno2, underpm10=underpm10, dif_pm25=dif_pm25, dif_no2=dif_no2, dif_pm10=dif_pm10, no2_plus=no2_plus,
-                               pm25_plus=pm25_plus, pm10_plus=pm10_plus)
-    except:
+                               underpm25=underpm25, underno2=underno2, underpm10=underpm10, dif_pm25=dif_pm25,
+                               dif_no2=dif_no2, dif_pm10=dif_pm10, no2_plus=no2_plus,
+                               pm25_plus=pm25_plus, pm10_plus=pm10_plus, path=path)
+    except Exception as e:
+        print("Error")
+        print(e)
         return render_template("main.html", Error=True)
 if __name__ == '__main__':
     backend.average_germany("AQI")

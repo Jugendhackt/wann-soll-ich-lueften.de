@@ -1,7 +1,9 @@
 import json
 
+import matplotlib
 import requests
 import prettytable
+from pasta.augment import inline
 
 list = prettytable.PrettyTable()
 list.field_names = ["Stadt", "Aufgerufen (Mal)"]
@@ -101,6 +103,41 @@ def get_data(location, message):
         }
         print(air_quality_data)
         return air_quality_data
+
+
+def make_diagram(city, PM2_5=None, PM10=None, NO2=None, NO2_avg=None, PM10_avg=None, PM2_5_avg=None, time=None):
+    import pandas
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from matplotlib import style
+
+    plt.switch_backend('agg')
+    print("Making Diagram...")
+    time_data = {'NO2': [NO2, NO2_avg], 'PM10': [PM10, PM10_avg], 'PM2.5': [PM2_5, PM2_5_avg]}
+    df = pandas.DataFrame(time_data, columns=['NO2', 'PM10', 'PM2.5'])
+    #Define names of grupes on X axis
+    names = [f"In {city} ({time})", f"In Deutschland (⌀)"]
+    #Position of bars on X axis
+    x = np.arange(len(names))
+    #Define width of bars
+    width = 0.25
+    #Make the plot
+    print("Plotting...")
+    style.use('ggplot')
+    plt.bar(x, df['NO2'], width, color='red', label='NO2')
+    plt.bar(x + width, df['PM10'], width, color='green', label='PM10')
+    plt.bar(x + width + width, df['PM2.5'], width, color='blue', label='PM2.5')
+    plt.xticks(x + width / 3, names)
+    plt.title(f"Wann soll ich lüften in {city}?")
+    plt.xlabel("Luftqualität")
+    plt.ylabel("Emissionen in µg/m³ und µm/m³")
+    plt.legend(loc='best')
+    print("Saving...")
+    plt.savefig(f"static/diagrams/0.png")
+    plt.close()
+    print("Done!")
+    return f"static/diagrams/0.png"
+
 
 
 def get_list():
@@ -310,10 +347,10 @@ def scale_germany(data):
     print(underno2)
     print(underpm10)
 
-
     return max_points, points, index, forecast_day1_index, aqi_avg, pm25_avg, no2_avg, pm10_avg, underpm10, underpm25, underno2, \
-           dif_pm10, dif_no2, dif_pm25,\
+           dif_pm10, dif_no2, dif_pm25, \
            no2_plus, pm25_plus, pm10_plus
 
+
 if __name__ == '__main__':
-    data = get_data("Köln", "Main")
+    make_diagram("Berlin", PM10_avg=10, PM2_5_avg=273, NO2_avg=21, PM10=19, PM2_5=60, NO2=70)
