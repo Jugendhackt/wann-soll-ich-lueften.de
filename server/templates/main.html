@@ -174,11 +174,18 @@ input[type=submit] {
     </div>
 
     <script>
+      // check if collapse state was saved
+      if (localStorage.getItem('collapse-footer') == 'true') {
+        $('#collapse-footer').removeClass('show');
+        $('#collapse-footer-button').html('<i class="bi bi-chevron-double-up"></i> Infos zum Projekt');
+      }
       $('#collapse-footer-button').click(function() {
         if ($('#collapse-footer-button').hasClass('collapsed')) {
           $('#collapse-footer-button').html('<i class="bi bi-chevron-double-up"></i> Infos zum Projekt');
+          localStorage.setItem('collapse-footer', 'true');
         } else {
           $('#collapse-footer-button').html('<i class="bi bi-chevron-double-down"></i> Schließen');
+          localStorage.setItem('collapse-footer', 'false');
         }
       });
     </script>
