@@ -3,77 +3,79 @@
 
 <head>
   <style>
-  body {
-    background: linear-gradient(to top, #28a745, #78d4e4);
-  }
+    body {
+      background: linear-gradient(to top, #28a745, #78d4e4);
+    }
 
-  hr {
-    margin: 0% 2%!important;
-  }
-.autocomplete {
-  position: relative;
-  display: inline-block;
-}
+    hr {
+      margin: 0% 2% !important;
+    }
 
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
-}
+    .autocomplete {
+      position: relative;
+      display: inline-block;
+    }
 
-input[type=text] {
-  background-color: #f1f1f1;
-  width: 100%;
-}
+    input {
+      border: 1px solid transparent;
+      background-color: #f1f1f1;
+      padding: 10px;
+      font-size: 16px;
+    }
 
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: #fff;
-  cursor: pointer;
-}
+    input[type=text] {
+      background-color: #f1f1f1;
+      width: 100%;
+    }
 
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 2
-}
+    input[type=submit] {
+      background-color: DodgerBlue;
+      color: #fff;
+      cursor: pointer;
+    }
 
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
-}
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #d4d4d4;
+      border-bottom: none;
+      border-top: none;
+      z-index: 99;
+      /*position the autocomplete items to be the same width as the container:*/
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 2
+    }
 
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-  background-color: #e9e9e9;
-}
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      border-bottom: 1px solid #d4d4d4;
+    }
 
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-  background-color: DodgerBlue !important;
-  color: #ffffff;
-}
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+      background-color: #e9e9e9;
+    }
+
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+      background-color: DodgerBlue !important;
+      color: #ffffff;
+    }
   </style>
-  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
   <script type="text/javascript">
-          $(function(){
-            $("#includedContent").load("table.html");
-          });
+    $(function () {
+      $("#includedContent").load("table.html");
+    });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=0.4">
   <meta author="" content="Jugendhackt Köln">
   <title>Wann-soll-ich-lueften?</title>
-  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link href="style.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <meta name="google-site-verification" content="YG_GTfMm5JdGepEug_T1iF4PLmNqKv9BmrgQUqjWU7g" />
@@ -91,10 +93,13 @@ input[type=submit] {
     <div class="row">
       <div class="col-4"></div>
       <div class="col-4">
-        <label for="country" class="form-label"><h2 class="display-4">Gib deine Stadt ein:</h2></label>
+        <label for="country" class="form-label">
+          <h2 class="display-4">Gib deine Stadt ein:</h2>
+        </label>
         <form class="form-inline" autocomplete="off" action="/luft" method="get">
           <div class="input-group mb-3">
-            <input name= "city" id="myInput" class="form-control mr-sm-2 rounded-start" type="text" placeholder="Stadt... z.b. Berlin">
+            <input name="city" id="myInput" class="form-control mr-sm-2 rounded-start" type="text"
+              placeholder="Stadt... z.b. Berlin">
             <button class="btn btn-success" type="submit" id="submitButton">Los geht's!</button>
           </div>
         </form>
@@ -102,7 +107,7 @@ input[type=submit] {
         <script>
           // when pressing enter, submit form
           var input = document.getElementById("myInput");
-          input.addEventListener("keyup", function(event) {
+          input.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
               event.preventDefault();
               $("#submitButton").click();
@@ -119,7 +124,7 @@ input[type=submit] {
         <br>
       </div>
     </div>
-      <!--
+    <!--
        <p class="display-5"><b>Top 10:</b> Meistgesuchte Städte</p>
       <div class="display-7" id="includedContent"></div>
       </div>
@@ -128,28 +133,30 @@ input[type=submit] {
     <br>
     <br>
     <br>
-    <div  id='map'  style='height:380px;width:680px; border-radius: 18px; z-index: 0'></div>
-    <link  rel="stylesheet"  href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"  />
-    <script  src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <div id='map' style='height:380px;width:680px; border-radius: 18px; z-index: 0'></div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
     <script>
-          var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-          var  OSM_ATTRIB  =  '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';
-          var  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});
+      var OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      var OSM_ATTRIB = '&copy;  <a  href="http://openstreetmap.org/copyright">OpenStreetMap</a>  contributors';
+      var osmLayer = L.tileLayer(OSM_URL, { attribution: OSM_ATTRIB });
 
-          var  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=156d754bf9a6f2fe5e9464886ab39463bdf88a06";
-          var  WAQI_ATTR  =  'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';
-          var  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});
+      var WAQI_URL = "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=156d754bf9a6f2fe5e9464886ab39463bdf88a06";
+      var WAQI_ATTR = 'Air  Quality  Tiles  &copy;  <a  href="http://waqi.info">waqi.info</a>';
+      var waqiLayer = L.tileLayer(WAQI_URL, { attribution: WAQI_ATTR });
 
-          var  map  =  L.map('map').setView([51.505,  -0.09],  11);
-          map.addLayer(osmLayer).addLayer(waqiLayer);
+      var map = L.map('map').setView([51.505, -0.09], 11);
+      map.addLayer(osmLayer).addLayer(waqiLayer);
     </script>
   </center>
 
   <footer class="bg-light text-center text-lg-start fixed-bottom" style="width: 100%">
 
     <div class="container p-4">
-      <a data-bs-toggle="collapse" data-bs-target="#collapse-footer" role="button" aria-expanded="false" aria-controls="collapse-footer" href="#collapse-footer" id="collapse-footer-button" style="text-decoration: none; color: grey;">
+      <a data-bs-toggle="collapse" data-bs-target="#collapse-footer" role="button" aria-expanded="false"
+        aria-controls="collapse-footer" href="#collapse-footer" id="collapse-footer-button"
+        style="text-decoration: none; color: grey;">
         <i class="bi bi-chevron-double-down"></i> Schließen
       </a>
       <div class="row collapse show" id="collapse-footer">
@@ -170,7 +177,8 @@ input[type=submit] {
           <h5 class="text-uppercase">Was macht unser Projekt?</h5>
 
           <p>
-            Unsere Webseite gibt anhand einer eigenen Skala und mehr als 11000 Stationen auf der Welt, die Luftqualität einer Stadt an und beantwortet die Frage
+            Unsere Webseite gibt anhand einer eigenen Skala und mehr als 11000 Stationen auf der Welt, die Luftqualität
+            einer Stadt an und beantwortet die Frage
             wann man anhand von Werten wie z.B. der Feinstaubbelastung lüften sollte. <a href="/more">Mehr...</a>
           </p>
         </div>
@@ -183,7 +191,7 @@ input[type=submit] {
         $('#collapse-footer').removeClass('show');
         $('#collapse-footer-button').html('<i class="bi bi-chevron-double-up"></i> Infos zum Projekt');
       }
-      $('#collapse-footer-button').click(function() {
+      $('#collapse-footer-button').click(function () {
         if ($('#collapse-footer-button').hasClass('collapsed')) {
           $('#collapse-footer-button').html('<i class="bi bi-chevron-double-up"></i> Infos zum Projekt');
           localStorage.setItem('collapse-footer', 'true');
@@ -197,7 +205,8 @@ input[type=submit] {
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       Version 2.5.0 | 09-05-23
       ;
-      © 2022-2023 <a class="text-dark" href="https://netcast-nlc.netlify.app">NetCast NLC</a> und <a class="text-dark" href="https://jugendhackt.org">Jugend-Hackt</a>
+      © 2022-2023 <a class="text-dark" href="https://netcast-nlc.netlify.app">NetCast NLC</a> und <a class="text-dark"
+        href="https://jugendhackt.org">Jugend-Hackt</a>
       ;
       <a class="text-dark" href="/doc-api">Unsere API</a>
       ;
@@ -216,119 +225,122 @@ input[type=submit] {
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
 
-<script>
-function autocomplete(inp, arr) {
-  /*the autocomplete function takes two arguments,
-  the text field element and an array of possible autocompleted values:*/
-  var currentFocus;
-  /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value;
-      /*close any already open lists of autocompleted values*/
-      closeAllLists();
-      if (!val) { return false;}
-      currentFocus = -1;
-      /*create a DIV element that will contain the items (values):*/
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-      /*append the DIV element as a child of the autocomplete container:*/
-      this.parentNode.appendChild(a);
-      // set overflow-y and max-height
-      a.style.overflowY = "scroll";
-      a.style.maxHeight = "200px";
-      /*for each item in the array...*/
-      for (i = 0; i < arr.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
-          /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
-          /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+  <script>
+    function autocomplete(inp, arr) {
+      /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+      var currentFocus;
+      /*execute a function when someone writes in the text field:*/
+      inp.addEventListener("input", function (e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false; }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        // set overflow-y and max-height
+        a.style.overflowY = "scroll";
+        a.style.maxHeight = "200px";
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
 
-          /*execute a function when someone clicks on the item value (DIV element):*/
-          b.addEventListener("click", function(e) {
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function (e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
-          });
-          a.appendChild(b);
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      /*execute a function presses a key on the keyboard:*/
+      inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+      function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+
+      }
+      function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active");
+        }
+
+      }
+      function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
         }
       }
-  });
-  /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
-      var x = document.getElementById(this.id + "autocomplete-list");
-      if (x) x = x.getElementsByTagName("div");
-      if (e.keyCode == 40) {
-        /*If the arrow DOWN key is pressed,
-        increase the currentFocus variable:*/
-        currentFocus++;
-        /*and and make the current item more visible:*/
-        addActive(x);
-      } else if (e.keyCode == 38) { //up
-        /*If the arrow UP key is pressed,
-        decrease the currentFocus variable:*/
-        currentFocus--;
-        /*and and make the current item more visible:*/
-        addActive(x);
-      } else if (e.keyCode == 13) {
-        /*If the ENTER key is pressed, prevent the form from being submitted,*/
-        e.preventDefault();
-        if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
-          if (x) x[currentFocus].click();
-        }
-      }
-  });
-  function addActive(x) {
-    /*a function to classify an item as "active":*/
-    if (!x) return false;
-    /*start by removing the "active" class on all items:*/
-    removeActive(x);
-    if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = (x.length - 1);
-    /*add class "autocomplete-active":*/
-    x[currentFocus].classList.add("autocomplete-active");
-
-  }
-  function removeActive(x) {
-    /*a function to remove the "active" class from all autocomplete items:*/
-    for (var i = 0; i < x.length; i++) {
-      x[i].classList.remove("autocomplete-active");
+      /*execute a function when someone clicks in the document:*/
+      document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+      });
     }
 
-  }
-  function closeAllLists(elmnt) {
-    /*close all autocomplete lists in the document,
-    except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
-        x[i].parentNode.removeChild(x[i]);
-      }
-    }
-  }
-  /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
-      closeAllLists(e.target);
-  });
-}
-
-// get cities from /static/cities.txt sync
-fetch("/static/cities.txt")
-  .then(response => response.text())
-  .then(text => {
-    /*initiate the autocomplete function on the "myInput" element, and pass along the cities array as possible autocomplete values:*/
-    autocomplete(document.getElementById("myInput"), text.split("\n"));
-})
-</script>
+    // get cities from /static/cities.txt sync
+    fetch("/static/cities.txt")
+      .then(response => response.text())
+      .then(text => {
+        /*initiate the autocomplete function on the "myInput" element, and pass along the cities array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput"), text.split("\n"));
+      })
+  </script>
 </body>
+
 </html>
