@@ -3,7 +3,6 @@ import json
 import matplotlib
 import requests
 import prettytable
-from pasta.augment import inline
 
 list = prettytable.PrettyTable()
 list.field_names = ["Stadt", "Aufgerufen (Mal)"]
