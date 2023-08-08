@@ -1,6 +1,18 @@
 # News
 # Updated 16.05.23
-Post 28.02.23:
+#Post 08.08.23:
+Reading time: about 5 minutes
+
+Hello to our 4th post!
+After a long time I have something to announce. In the last few days I've been looking at how to program a simple login system and am familiarizing myself with it. I don't WANT to do anything wrong like leaking user data because the code isn't secure. The whole topic is very important to me. I am now also registered for JugendHackt 2023 and will be there again. I don't know yet what I will do there, but I will try to program the website (wann-soll-ich-lüften.de) as a project at JugendHackt. Let's see. Also, now that we had problems, I would like to upload the latest version (2.5.5) to the server, because we had some problems. That's why I want to release "Stable" and "Experimental" versions now. These are then marked in the Updates tab. The "Experimental" version means that it is not a stable running version and errors can occur. The "Stable" version means that little to no errors can occur. We will always upload the "stable" versions to the server, and you can start the "experimental" versions on your PC and try them out on localhost. I'll soon be marking all the previous versions as well. In any case, the 2.5.5 version is currently "Experimental" and we will continue to program it soon and hopefully bring it to "Stable".
+
+Thank you for reading!
+
+Luis Schuimer
+8/8/23
+Velbert, North Rhine-Westphalia, Germany
+
+#Post 28.02.23:
 
 Hello to our 3rd post after we presented our goals for 2023. But today I have something new to share. We would like to prepare you for the 3.0 update. There will be one of the biggest changes we've ever made. accounts! Yes, you can create accounts and log in from the 3.0 update. You can set cities as your favorites and you can get all the data quickly. We will also look for some other API's for the data and then use them. However, this turns out to be difficult because a number of a station must be specified In the most API's. There is also another problem: We need storage space on our servers to store all login data. Currently we have 25GB of Storage. But there i still don't know how big data for 1 Account is but I will do some calculations here. But that costs money. More than I would like to pay alone. We don't know yet if you can look at voluntary advertising to support us or if you can donate. We definitely do NOT want to ask for money for a pro account with us or release data until you pay. So no worries there. 
 
@@ -8,7 +20,7 @@ Thank you for reading the post.
 
 Luis Schuimer
 
-Post 1.1.23:
+#Post 1.1.23:
 
 Hello everyone!
 I would now like to announce what will change in 2023.
@@ -29,7 +41,7 @@ There may be other features that are not on the list.
 Thanks!
 Luis Schuimer
 
-Post 18.12.22:
+#Post 18.12.22:
 
 Hello everyone!
 a few days have passed without wann-soll-ich-lüften.de and there is news again. After some writing around in the JugendHackt community, the website was brought back online by some mentors (Philip, Ties and Jonas). Me and everyone else on the wann-soll-ich-lüften team say thank you to the mentors. Without you, the website would be offline for several months. Many thanks again to Jonas who owns the server and now hosts the website.
