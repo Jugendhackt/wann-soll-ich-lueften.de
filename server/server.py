@@ -97,6 +97,10 @@ def luft():
         country = request.args.get('city')
         luft = backend.get_data(country, "Server")
         print(luft)
+        if not luft:
+            client_ip = request.remote_addr
+            with open("hacks.txt", "a") as f:
+                f.write(f"{client_ip}\n")
         requests = luft["Requests"]
         Stationsname = luft['Station Name']
         Updatestatus = luft['Last Update']

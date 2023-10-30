@@ -12,97 +12,100 @@ list.set_style(prettytable.PLAIN_COLUMNS)
 
 def get_data(location, message):
     TOKEN = "156d754bf9a6f2fe5e9464886ab39463bdf88a06"
-    URL = f"https://api.waqi.info/feed/{location}/?token={TOKEN}"
-    print(f"Getting Data...      Called by {message}")
-    response = requests.get(URL)
-    response_data = response.text
-    get_data = json.loads(response_data)
-    print("Loading Data...")
-    pm25 = None
-    pm10 = None
-    no2 = None
-    air_quality_index = get_data['data']['aqi']
-    station_name = get_data['data']['city']['name']
-    station_id = get_data['data']['idx']
-    last_update = get_data['data']['time']['s']
-    forecast_1_pm25_day = get_data['data']['forecast']['daily']['pm25']
-    forecast_1_pm25_avg = get_data['data']['forecast']['daily']['pm25']
-    forecast_1_pm10_day = get_data['data']['forecast']['daily']['pm10']
-    forecast_1_pm10_avg = get_data['data']['forecast']['daily']['pm10']
-    forecast_1_pm10_avg = forecast_1_pm10_avg[1]['avg']
-    forecast_1_pm10_day = forecast_1_pm10_day[1]['day']
-    forecast_1_pm25_avg = forecast_1_pm25_avg[1]['avg']
-    forecast_1_pm25_day = forecast_1_pm25_day[1]['day']
-    try:
-        # Emission von Feinstaub der Patikelgröße PM2.5
-        pm25 = get_data['data']['iaqi']['pm25']['v']
-    except:
-        pass
-    try:
-        # Emission von Feinstaub der Patikelgröße PM10
-        pm10 = get_data['data']['iaqi']['pm10']['v']
-    except:
-        pass
-    try:
-        no2 = get_data['data']['iaqi']['no2']['v']
-    except Exception as error:
-        pass
-    index = check_aqi(air_quality_index)
-    if "ö" in location:
-        new_location = location.replace("ö", "oe")
-    elif "ä" in location:
-        new_location = location.replace("ä", "ae")
-    elif "ü" in location:
-        new_location = location.replace("ü", "ue")
-    else:
-        new_location = location
-    try:
-        with open(f"data/{new_location}", "r") as data_loc:
-            loc_request = int(data_loc.read())
-        with open(f"data/{new_location}", "w") as data_loc_w_n:
-            new_loc_r = loc_request = loc_request + 1
-            print(new_loc_r)
-            data_loc_w_n.write(str(new_loc_r))
+    if not "@" in location:
+        URL = f"https://api.waqi.info/feed/{location}/?token={TOKEN}"
+        print(f"Getting Data...      Called by {message}")
+        response = requests.get(URL)
+        response_data = response.text
+        get_data = json.loads(response_data)
+        print("Loading Data...")
+        pm25 = None
+        pm10 = None
+        no2 = None
+        air_quality_index = get_data['data']['aqi']
+        station_name = get_data['data']['city']['name']
+        station_id = get_data['data']['idx']
+        last_update = get_data['data']['time']['s']
+        forecast_1_pm25_day = get_data['data']['forecast']['daily']['pm25']
+        forecast_1_pm25_avg = get_data['data']['forecast']['daily']['pm25']
+        forecast_1_pm10_day = get_data['data']['forecast']['daily']['pm10']
+        forecast_1_pm10_avg = get_data['data']['forecast']['daily']['pm10']
+        forecast_1_pm10_avg = forecast_1_pm10_avg[1]['avg']
+        forecast_1_pm10_day = forecast_1_pm10_day[1]['day']
+        forecast_1_pm25_avg = forecast_1_pm25_avg[1]['avg']
+        forecast_1_pm25_day = forecast_1_pm25_day[1]['day']
         try:
-            list.sort_key(new_location)
-            del_row = list.get_string(fields=["Stadt"], end=1)
-            del_row2 = list.get_string(fields=["Stadt"], start=1, end=2)
-            print(del_row2)
-            print(del_row)
-            if del_row == new_loc_r:
-                if del_row2 == new_loc_r:
-                    list.del_row(del_row)
-
+            # Emission von Feinstaub der Patikelgröße PM2.5
+            pm25 = get_data['data']['iaqi']['pm25']['v']
         except:
             pass
-    except:
-        with open(f"data/{new_location}", "w") as data_loc_w:
-            data_loc_w.write("1")
-            new_loc_r = 1
-    if message == "API":
-        forecast_day = forecast_1_pm10_day
-        data = [station_id, station_name, last_update, new_loc_r, pm10, pm25, no2, forecast_1_pm25_day, forecast_day,
-                forecast_1_pm25_day, forecast_1_pm25_avg, forecast_1_pm10_avg]
-        return data
+        try:
+            # Emission von Feinstaub der Patikelgröße PM10
+            pm10 = get_data['data']['iaqi']['pm10']['v']
+        except:
+            pass
+        try:
+            no2 = get_data['data']['iaqi']['no2']['v']
+        except Exception as error:
+            pass
+        index = check_aqi(air_quality_index)
+        if "ö" in location:
+            new_location = location.replace("ö", "oe")
+        elif "ä" in location:
+            new_location = location.replace("ä", "ae")
+        elif "ü" in location:
+            new_location = location.replace("ü", "ue")
+        else:
+            new_location = location
+        try:
+            with open(f"data/{new_location}", "r") as data_loc:
+                loc_request = int(data_loc.read())
+            with open(f"data/{new_location}", "w") as data_loc_w_n:
+                new_loc_r = loc_request = loc_request + 1
+                print(new_loc_r)
+                data_loc_w_n.write(str(new_loc_r))
+            try:
+                list.sort_key(new_location)
+                del_row = list.get_string(fields=["Stadt"], end=1)
+                del_row2 = list.get_string(fields=["Stadt"], start=1, end=2)
+                print(del_row2)
+                print(del_row)
+                if del_row == new_loc_r:
+                    if del_row2 == new_loc_r:
+                        list.del_row(del_row)
+
+            except:
+                pass
+        except:
+            with open(f"data/{new_location}", "w") as data_loc_w:
+                data_loc_w.write("1")
+                new_loc_r = 1
+        if message == "API":
+            forecast_day = forecast_1_pm10_day
+            data = [station_id, station_name, last_update, new_loc_r, pm10, pm25, no2, forecast_1_pm25_day, forecast_day,
+                    forecast_1_pm25_day, forecast_1_pm25_avg, forecast_1_pm10_avg]
+            return data
+        else:
+            list.add_row([new_location, new_loc_r])
+            air_quality_data = {
+                "AQI": air_quality_index,
+                "Air Quality": index,
+                "Station Name": station_name,
+                "Station ID": station_id,
+                "Last Update": last_update,
+                "Requests": new_loc_r,
+                "PM2.5": pm25,
+                "PM10": pm10,
+                "No2": no2,
+                "Forecast PM2.5 Day": forecast_1_pm25_day,
+                "Forecast PM2.5 Avg": forecast_1_pm25_avg,
+                "Forecast PM10 Day": forecast_1_pm10_day,
+                "Forecast PM10 Avg": forecast_1_pm10_avg
+            }
+            print(air_quality_data)
+            return air_quality_data
     else:
-        list.add_row([new_location, new_loc_r])
-        air_quality_data = {
-            "AQI": air_quality_index,
-            "Air Quality": index,
-            "Station Name": station_name,
-            "Station ID": station_id,
-            "Last Update": last_update,
-            "Requests": new_loc_r,
-            "PM2.5": pm25,
-            "PM10": pm10,
-            "No2": no2,
-            "Forecast PM2.5 Day": forecast_1_pm25_day,
-            "Forecast PM2.5 Avg": forecast_1_pm25_avg,
-            "Forecast PM10 Day": forecast_1_pm10_day,
-            "Forecast PM10 Avg": forecast_1_pm10_avg
-        }
-        print(air_quality_data)
-        return air_quality_data
+        return False
 
 
 def make_diagram(city, PM2_5=None, PM10=None, NO2=None, NO2_avg=None, PM10_avg=None, PM2_5_avg=None, time=None):
