@@ -1,5 +1,5 @@
 # News
-# Updated 08.08.23
+# Updated 30.10.23
 #Post 08.08.23:
 Reading time: about 5 minutes
 
@@ -49,6 +49,19 @@ a few days have passed without wann-soll-ich-lüften.de and there is news again.
 Thanks!
 Luis Schuimer
 
+# How to run the server
+1. Download the preffered Version and unpack it
+2. Make sure that you have Python installed.
+3. Install the following Packages:
+   Install them via pip install ...
+        1. json
+        2. requests
+        3. prettytable
+        4. flask
+
+5. Run the server with the command: python3 server.py
+6. Wait for the server to start (you need a internet connection for this)
+7. Go on the URL you see in the console: http://127.0.0.1:5000
 
 # wann-soll-ich-lueften.de
 WebApp suggesting the best time to vent your apartment
