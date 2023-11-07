@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "wann-soll-ich-lueften-de"
+version = "3.0.0"
+description = ""
+authors = ["2mal3 <56305732+2mal3@users.noreply.github.com>", "LuisSchuimer <luis.schuimer@outlook.com>"]
+readme = "README.md"
+packages = [{include = "wsil"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
