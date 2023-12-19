@@ -1,5 +1,26 @@
 # News
 ## Updated 30.10.23
+
+## Post 19.12.23:
+Reading time: about 5 minutes
+
+Hello!
+
+After another long time, I would like to say something about wann-soll-ich-lüften.de. I decided to completely reprogram wann-soll-ich-lüften.de with a friend. The reason for this is that it is very difficult to add new features to the software. When we started the project at JugendHackt 2022 in Cologne, we implemented everything in a very “improvised” way. Everything is quite confusing and I sometimes don't know where anything is anymore. That will change now. We have already started and will continue working on it in the next few days/weeks/months. We plan that the old version will also be available as a “legacy version”. I also have plans to develop a kit so that people who want to build an air measuring station can also be included in the wann-soll-ich-lüften.de system. That would also require a lot of resources and planning to implement such a system in addition to the API from where we get our data.
+
+Wann-soll-ich-lüften.de also turned 1 year old in November!
+
+I never thought the project would continue for so long. 1 year is such a long time, but it still went by quickly. I can still clearly remember where we programmed it together at the event. It was such a lovely time!
+
+We will continue to keep you updated.
+Merry Christmas and a Happy New Year!
+
+Thanks!
+Luis Schuimer
+
+Velbert, Neviges on 12/19/23
+
+
 ## Post 08.08.23:
 Reading time: about 5 minutes
 
